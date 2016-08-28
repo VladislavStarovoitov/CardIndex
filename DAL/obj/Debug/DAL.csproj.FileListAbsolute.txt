@@ -1,0 +1,16 @@
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DAL.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DAL.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL\obj\Debug\DAL.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\obj\Debug\DAL.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DAL.dll.config
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\BLL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DAL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\EntityFramework.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\ORM.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\BLL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\ORM.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DAL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\EntityFramework.xml
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\для учебы\курсы\проект\CardIndex\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

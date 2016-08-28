@@ -1,0 +1,7 @@
+E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\BLL.dll
+E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\BLL.pdb
+E:\для учебы\курсы\проект\CardIndex\BLL\obj\Debug\BLL.dll
+E:\для учебы\курсы\проект\CardIndex\BLL\obj\Debug\BLL.pdb
+E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\BLL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\BLL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache

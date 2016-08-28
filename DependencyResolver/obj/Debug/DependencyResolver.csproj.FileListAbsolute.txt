@@ -1,0 +1,9 @@
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\bin\Debug\DependencyResolver.dll
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\bin\Debug\DependencyResolver.pdb
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\bin\Debug\Ninject.dll
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\bin\Debug\Ninject.Web.Common.dll
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\bin\Debug\Ninject.xml
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\bin\Debug\Ninject.Web.Common.xml
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\obj\Debug\DependencyResolver.csprojResolveAssemblyReference.cache
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\obj\Debug\DependencyResolver.dll
+E:\для учебы\курсы\проект\CardIndex\DependencyResolver\obj\Debug\DependencyResolver.pdb

@@ -1,0 +1,9 @@
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\bin\Debug\DAL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\bin\Debug\DAL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\obj\Debug\DAL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\obj\Debug\DAL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\obj\Debug\DAL.Interface.csprojResolveAssemblyReference.cache
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\bin\Debug\ORM.dll
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\bin\Debug\EntityFramework.dll
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\bin\Debug\ORM.pdb
+E:\для учебы\курсы\проект\CardIndex\DAL.Interface\bin\Debug\EntityFramework.xml
