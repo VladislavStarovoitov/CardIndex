@@ -30,7 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL.Interface">
+    <Reference Include="BLL.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BLL.Interface\bin\Debug\BLL.Interface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -43,11 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\BLLEntityMappers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BookService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mappers\" />
+    <ProjectReference Include="..\DAL.Interface\DAL.Interface.csproj">
+      <Project>{91579F26-2DDB-4155-984F-213C3166DF59}</Project>
+      <Name>DAL.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

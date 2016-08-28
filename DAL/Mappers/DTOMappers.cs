@@ -10,7 +10,7 @@ namespace DAL.Mappers
 {
     public static class DTOMappers
     {
-        public static Book ToORMBook(this DALBook dalBook)
+        public static Book ToOrmBook(this DALBook dalBook)
         {
             var book = new Book()
             {
@@ -23,7 +23,7 @@ namespace DAL.Mappers
             return book;            
         }
 
-        public static DALBook ToDALBook(this Book book)
+        public static DALBook ToDalBook(this Book book)
         {
             var dalBook = new DALBook()
             {
