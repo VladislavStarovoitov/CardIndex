@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Interface.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace BLL.Interface.Services
 {
     public interface IBookService : IDisposable
     {
-        void AddBook();
+        void AddBook(BLLBook bllBook);
     }
 }
