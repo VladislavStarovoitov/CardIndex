@@ -9,9 +9,16 @@ using System.Data.Entity;
 
 namespace DAL.Repositories
 {
-    public class BookRepository : IRepository<DALBook>
+    public class BookRepository : IBookRepository
     {
-        public void Create(DALBook entity)
+        private readonly DbContext _dataBase;
+
+        public BookRepository(DbContext dataBase)
+        {
+            _dataBase = dataBase;
+        }
+
+        public void Create(DALBook entity)////////////////////////////////////////
         {
             throw new NotImplementedException();
         }
