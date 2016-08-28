@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BLL.Interface\bin\Debug\BLL.Interface.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +45,10 @@
     <Compile Include="Services\BookService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
+      <Project>{1061B09A-1128-4C4B-8B9C-FF402909EBD6}</Project>
+      <Name>BLL.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL.Interface\DAL.Interface.csproj">
       <Project>{91579F26-2DDB-4155-984F-213C3166DF59}</Project>
       <Name>DAL.Interface</Name>

@@ -44,6 +44,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="BLL.Interface">
+      <HintPath>..\BLL.Interface\bin\Debug\BLL.Interface.dll</HintPath>
+    </Reference>
     <Reference Include="DependencyResolver">
       <HintPath>..\DependencyResolver\bin\Debug\DependencyResolver.dll</HintPath>
     </Reference>

@@ -64,3 +64,13 @@ E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DependencyResol
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\Ninject.xml
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\Ninject.Web.Common.xml
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\Ninject.Web.Mvc.xml
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\ORM.dll
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DAL.Interface.dll
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DAL.dll
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\ORM.pdb
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DAL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DAL.pdb
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.dll
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.pdb
