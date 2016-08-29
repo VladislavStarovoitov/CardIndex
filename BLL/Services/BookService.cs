@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.Interface.Services;
-using BLL.Interface.Entities;
 using DAL.Interface.Repositories;
+using DTO;
 
 namespace BLL.Services
 {
@@ -18,7 +18,7 @@ namespace BLL.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void AddBook(BLLBook bllBook)
+        public bool AddBook(DtoBook dtoBook)
         {
             throw new NotImplementedException();
         }

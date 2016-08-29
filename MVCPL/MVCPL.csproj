@@ -189,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Helpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\Mappers\MvcModelMappers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
@@ -243,7 +244,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Book\AddBook.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{DD4A5324-B4E8-40D3-86CA-3E9FCC056B9A}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

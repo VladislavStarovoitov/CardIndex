@@ -74,3 +74,5 @@ E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DAL.Interface.p
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DAL.pdb
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.pdb
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DTO.dll
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DTO.pdb

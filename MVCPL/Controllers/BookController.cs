@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL.Interface.Services;
-using BLL.Mappers;
 
 namespace MVCPL.Controllers
 {
@@ -32,11 +31,14 @@ namespace MVCPL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddBook(Book book, HttpPostedFileBase file)
         {
-            byte[] image = new byte[file.ContentLength];
-            file.InputStream.Read(image, 0, file.ContentLength);
-            book.Image = image;
+            if (ModelState.IsValid)
+            {
+                byte[] image = new byte[file.ContentLength];
+                file.InputStream.Read(image, 0, file.ContentLength);
+                book.Image = image;
+            }
            
-            return View();
+            return View(book);
         }
 
         protected override void Dispose(bool disposing)

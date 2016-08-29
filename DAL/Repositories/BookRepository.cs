@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Interface.Repositories;
-using DAL.Interface.DTO;
 using System.Data.Entity;
+using DTO;
 
 namespace DAL.Repositories
 {
@@ -18,17 +18,17 @@ namespace DAL.Repositories
             _dataBase = dataBase;
         }
 
-        public void Create(DALBook entity)////////////////////////////////////////
+        public void Create(DtoBook entity)////////////////////////////////////////
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<DALBook> GetAll()
+        public IEnumerable<DtoBook> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public DALBook GetById(int id)
+        public DtoBook GetById(int id)
         {
             throw new NotImplementedException();
         }

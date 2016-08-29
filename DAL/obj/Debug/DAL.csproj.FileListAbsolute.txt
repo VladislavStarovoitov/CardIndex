@@ -14,3 +14,5 @@ E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DAL.Interfa
 E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\EntityFramework.xml
 E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\EntityFramework.SqlServer.xml
 E:\для учебы\курсы\проект\CardIndex\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DTO.dll
+E:\для учебы\курсы\проект\CardIndex\DAL\bin\Debug\DTO.pdb

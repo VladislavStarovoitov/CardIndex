@@ -7,3 +7,5 @@ E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\BLL.Interfa
 E:\для учебы\курсы\проект\CardIndex\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\DAL.Interface.dll
 E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\DAL.Interface.pdb
+E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\DTO.dll
+E:\для учебы\курсы\проект\CardIndex\BLL\bin\Debug\DTO.pdb

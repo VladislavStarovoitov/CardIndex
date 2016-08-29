@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Interface.DTO;
 using ORM;
+using DTO;
 
 namespace DAL.Mappers
 {
     public static class DTOMappers
     {
-        public static Book ToOrmBook(this DALBook dalBook)
+        public static Book ToOrmBook(this DtoBook dalBook)
         {
             var book = new Book()
             {
@@ -23,9 +23,9 @@ namespace DAL.Mappers
             return book;            
         }
 
-        public static DALBook ToDalBook(this Book book)
+        public static DtoBook ToDtoBook(this Book book)
         {
-            var dalBook = new DALBook()
+            var dalBook = new DtoBook()
             {
                 Id = book.Id,
                 Name = book.Name,
