@@ -72,7 +72,7 @@
       <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\ORM\ORM.csproj">
-      <Project>{5473081A-1B68-4C33-948E-2EA63A3A3041}</Project>
+      <Project>{89C59B89-6AFE-44D9-8E3B-7A0600DA8F37}</Project>
       <Name>ORM</Name>
     </ProjectReference>
   </ItemGroup>

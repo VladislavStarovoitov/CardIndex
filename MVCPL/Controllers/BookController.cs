@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL.Interface.Services;
+using MVCPL.Infrastructure.Mappers;
 
 namespace MVCPL.Controllers
 {
@@ -31,13 +32,23 @@ namespace MVCPL.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddBook(Book book, HttpPostedFileBase file)
         {
+            bool bookExist = false;
             if (ModelState.IsValid)
             {
                 byte[] image = new byte[file.ContentLength];
                 file.InputStream.Read(image, 0, file.ContentLength);
                 book.Image = image;
+                book.Authors = new List<string>();
+                book.Authors.Add("Емец");
+                book.Authors.Add("Старовойтов");
+                bookExist = _bookService.AddBook(book.ToDtoBook());
             }
-           
+            if (!bookExist)
+            {
+                ViewBag.Title = "Success";
+                return View(book);
+            }
+            ModelState.AddModelError("", "This book exists");
             return View(book);
         }
 

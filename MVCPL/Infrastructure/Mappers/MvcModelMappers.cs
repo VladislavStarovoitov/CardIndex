@@ -28,7 +28,7 @@ namespace MVCPL.Infrastructure.Mappers
             {
                 Id = dtoBook.Id,
                 Name = dtoBook.Name,
-                Authors = dtoBook.Authors,
+                Authors = dtoBook.Authors.ToList(),
                 Description = dtoBook.Description,
                 Year = dtoBook.Year,
                 Image = dtoBook.Image

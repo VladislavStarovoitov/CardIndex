@@ -191,9 +191,7 @@
     <Compile Include="Infrastructure\Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\Mappers\MvcModelMappers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
-    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

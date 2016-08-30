@@ -8,7 +8,7 @@ namespace DAL.Interface.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
-        IBookRepository Books { get;}
+        IBookRepository GetBooks();
         void Commit();
     }
 }

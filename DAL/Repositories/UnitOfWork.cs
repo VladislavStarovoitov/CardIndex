@@ -20,29 +20,31 @@ namespace DAL.Repositories
             _dataBase = dataBase;
         }
 
-        public IBookRepository Books
+        public IBookRepository GetBooks()
         {
-            get
-            {
-                if (_bookRespository == null)
+            //get
+            //{
+                if (ReferenceEquals(_bookRespository, null))
                     _bookRespository = new BookRepository(_dataBase);
                 return _bookRespository;
-            }
+            //}
         }
 
         public void Commit()
         {
+            bool result = false;
             if (!ReferenceEquals(_dataBase, null))
             {
-                _dataBase.SaveChanges();
+                result = _dataBase.SaveChanges() > 0;
             }
+            //return false;
         }
 
         public void Dispose()
         {
             if (!_disposed)
             {
-                _dataBase.SaveChanges();
+                _dataBase.Dispose();
                 _disposed = true;
             }
         }

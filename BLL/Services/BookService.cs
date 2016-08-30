@@ -20,7 +20,12 @@ namespace BLL.Services
 
         public bool AddBook(DtoBook dtoBook)
         {
-            throw new NotImplementedException();
+            var result = _unitOfWork.GetBooks().Create(dtoBook);
+            if (result)
+            {
+                _unitOfWork.Commit();
+            }
+            return result;
         }
 
         public void Dispose()

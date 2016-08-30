@@ -20,20 +20,24 @@ namespace DAL.Mappers
                 Image = dalBook.Image,
                 Year = dalBook.Year
             };
+            foreach (var author in dalBook.Authors)
+            {
+                book.Authors.Add(new Author() { Name = author });
+            }
             return book;            
         }
 
         public static DtoBook ToDtoBook(this Book book)
         {
-            var dalBook = new DtoBook()
+            return new DtoBook()
             {
                 Id = book.Id,
                 Name = book.Name,
                 Description = book.Description,
                 Image = book.Image,
-                Year = book.Year
+                Year = book.Year,
+                Authors = book.Authors.Select(a => a.Name)
             };
-            return dalBook;
         }
     }
 }

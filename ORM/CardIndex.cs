@@ -12,12 +12,16 @@ namespace ORM
         {
         }
 
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Author>()
+                .HasMany(e => e.Books)
+                .WithMany(e => e.Authors)
+                .Map(m => m.ToTable("BookAuthors"));
         }
     }
 }

@@ -8,7 +8,7 @@
     <h2>Add Book</h2>
 
 
-    @using (Html.BeginForm("AddBook", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("AddBook", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
@@ -40,7 +40,7 @@
 
             <div class="form-group">
                 <label class="control-label col-md-2">Load image</label>
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-10">
                     <label class="btn btn-default">Browse<input type="file" name="file" id="browse"></label>                   
                 </div>
              </div>

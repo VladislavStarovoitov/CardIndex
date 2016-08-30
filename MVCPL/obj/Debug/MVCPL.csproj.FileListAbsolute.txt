@@ -55,7 +55,6 @@ E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\EntityFramework
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\EntityFramework.xml
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\EntityFramework.SqlServer.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\EntityFramework.SqlServer.xml
-E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DependencyResolver.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\Ninject.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\Ninject.Web.Common.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\Ninject.Web.Mvc.dll
@@ -76,3 +75,4 @@ E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\BLL.pdb
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DTO.dll
 E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DTO.pdb
+E:\для учебы\курсы\проект\CardIndex\MVCPL\bin\DependencyResolver.dll

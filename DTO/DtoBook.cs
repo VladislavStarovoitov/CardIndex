@@ -10,7 +10,7 @@ namespace DTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string[] Authors { get; set; }
+        public IEnumerable<string> Authors { get; set; }
         public int Year { get; set; }
         public string Description { get; set; }
         public byte[] Image { get; set; }
