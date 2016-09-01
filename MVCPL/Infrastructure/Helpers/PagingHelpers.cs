@@ -30,7 +30,7 @@ namespace MVCPL.Infrastructure.Helpers
             return MvcHtmlString.Create(result.ToString());
         }
 
-        public static MvcHtmlString ShowBook(this HtmlHelper html, Book book)
+        public static MvcHtmlString ShowBook(this HtmlHelper html, BookViewModel book)
         {
             TagBuilder[] tagsP = new TagBuilder[2];
             for (int i = 0; i < 2; i++)

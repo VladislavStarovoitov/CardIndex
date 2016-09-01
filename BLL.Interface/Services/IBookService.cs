@@ -9,6 +9,6 @@ namespace BLL.Interface.Services
 {
     public interface IBookService : IDisposable
     {
-        bool AddBook(DtoBook dtoBook);
+        bool AddBook(DtoBook dtoBook, string newAuthors, string newGenres);
     }
 }

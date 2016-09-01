@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL.Interface.Services;
 using MVCPL.Infrastructure.Mappers;
+using MVCPL.Infrastructure;
 
 namespace MVCPL.Controllers
 {
@@ -25,25 +26,28 @@ namespace MVCPL.Controllers
 
         public ActionResult AddBook()
         {
-            return View();
+            var book = new BookViewModel();
+            book.Authors.AddRange(new List<Author> { new Author { Id = 1, Name = "Емец" }, new Author { Id = 2, Name = "Старовойтов" } });
+            book.Genres.AddRange(new List<Genre> { new Genre { Id = 1, Name = "fantasy" }, new Genre { Id = 2, Name = "drama" } });
+            return View(book);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddBook(Book book, HttpPostedFileBase file)
+        //CaseExeptionFilter
+        public ActionResult AddBook(BookViewModel book, string newAuthors, string newGenres)
         {
-            bool bookExist = false;
+            bool isAdded = false;
+            if (ReferenceEquals(book.ImageFile, null))
+                ModelState.AddModelError("ImageFile", "You should load image");
             if (ModelState.IsValid)
             {
-                byte[] image = new byte[file.ContentLength];
-                file.InputStream.Read(image, 0, file.ContentLength);
+                byte[] image = new byte[book.ImageFile.ContentLength];
+                book.ImageFile.InputStream.Read(image, 0, book.ImageFile.ContentLength);
                 book.Image = image;
-                book.Authors = new List<string>();
-                book.Authors.Add("Емец");
-                book.Authors.Add("Старовойтов");
-                bookExist = _bookService.AddBook(book.ToDtoBook());
+                isAdded = _bookService.AddBook(book.ToDtoBook(), newAuthors, newGenres);
             }
-            if (!bookExist)
+            if (isAdded)
             {
                 ViewBag.Title = "Success";
                 return View(book);

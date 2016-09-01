@@ -69,6 +69,15 @@
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="CardIndex.cs" />
+    <Compile Include="Genre.cs" />
+    <Compile Include="Migrations\201608311837383_InitialCreate.cs" />
+    <Compile Include="Migrations\201608311837383_InitialCreate.Designer.cs">
+      <DependentUpon>201608311837383_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608311838497_AddGenre.cs" />
+    <Compile Include="Migrations\201608311838497_AddGenre.Designer.cs">
+      <DependentUpon>201608311838497_AddGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
@@ -87,6 +96,14 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608311837383_InitialCreate.resx">
+      <DependentUpon>201608311837383_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608311838497_AddGenre.resx">
+      <DependentUpon>201608311838497_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

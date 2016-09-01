@@ -11,7 +11,7 @@ namespace MVCPL.Controllers
 {
     public class HomeController : Controller
     {
-        Book[] _books = new Book[6];
+        BookViewModel[] _books = new BookViewModel[6];
 
         public HomeController()
         {
@@ -21,7 +21,7 @@ namespace MVCPL.Controllers
                 image = new byte[file.Length];
                 file.Read(image, 0, image.Length);
             }
-            var book = new Book() { Id = 1, Description = "Jast example, my Lord", Name = "G.O.D", Image = image };
+            var book = new BookViewModel() { Id = 1, Description = "Jast example, my Lord", Name = "G.O.D", Image = image };
             for (int i = 0; i < 6; i++)
             {
                 _books[i] = book;
@@ -31,7 +31,7 @@ namespace MVCPL.Controllers
         public ActionResult Index(int page = 1)
         {            
             PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _books.Count() };
-            IEnumerable<Book> booksPerPage = _books.Skip((page - 1) * info.PageSize).Take(info.PageSize);
+            IEnumerable<BookViewModel> booksPerPage = _books.Skip((page - 1) * info.PageSize).Take(info.PageSize);
             IndexViewModel ivm = new IndexViewModel() { Books = booksPerPage, PageInfo = info };
             return View(ivm);
         }

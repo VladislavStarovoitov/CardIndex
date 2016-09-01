@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 380px;
 }
 
 .box{
@@ -39,10 +39,6 @@ textarea {
 
 .clear{
     clear: both;
-}
-
-#browse{
-    display:none;
 }
 
 .field-validation-error {

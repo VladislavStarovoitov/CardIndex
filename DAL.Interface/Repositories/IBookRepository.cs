@@ -9,5 +9,6 @@ namespace DAL.Interface.Repositories
 {
     public interface IBookRepository : IRepository<DtoBook>
     {
+        bool Create(DtoBook entity, string[] newAuthors, string[] newGenres);
     }
 }

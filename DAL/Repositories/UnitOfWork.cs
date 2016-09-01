@@ -20,24 +20,22 @@ namespace DAL.Repositories
             _dataBase = dataBase;
         }
 
-        public IBookRepository GetBooks()
+        public IBookRepository Books
         {
-            //get
-            //{
+            get
+            {
                 if (ReferenceEquals(_bookRespository, null))
                     _bookRespository = new BookRepository(_dataBase);
                 return _bookRespository;
-            //}
+            }
         }
 
         public void Commit()
         {
-            bool result = false;
             if (!ReferenceEquals(_dataBase, null))
             {
-                result = _dataBase.SaveChanges() > 0;
+                _dataBase.SaveChanges();
             }
-            //return false;
         }
 
         public void Dispose()

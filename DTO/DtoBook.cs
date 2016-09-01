@@ -10,9 +10,16 @@ namespace DTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<string> Authors { get; set; }
+        public List<DtoAuthor> Authors { get; set; }
+        public List<DtoGenre> Genres { get; set; }
         public int Year { get; set; }
         public string Description { get; set; }
         public byte[] Image { get; set; }
+
+        public DtoBook()
+        {
+            Authors = new List<DtoAuthor>();
+            Genres = new List<DtoGenre>();
+        }
     }
 }

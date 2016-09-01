@@ -12,6 +12,7 @@ namespace ORM
         public Book()
         {
             Authors = new HashSet<Author>();
+            Genres = new HashSet<Genre>();
         }
 
         public int Id { get; set; }
@@ -26,5 +27,7 @@ namespace ORM
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Author> Authors { get; set; }
+
+        public ICollection<Genre> Genres { get; set; }
     }
 }

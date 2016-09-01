@@ -10,6 +10,7 @@ namespace ORM.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ORM.CardIndex context)

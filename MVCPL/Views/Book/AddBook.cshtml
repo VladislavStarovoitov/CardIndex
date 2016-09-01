@@ -1,12 +1,11 @@
 ﻿@section body{
-    @model MVCPL.Models.Book
+    @model MVCPL.Models.BookViewModel
 
     @{
         ViewBag.Title = "Add Book";
     }
 
     <h2>Add Book</h2>
-
 
     @using (Html.BeginForm("AddBook", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
@@ -31,6 +30,34 @@
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(model => model.Authors, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.AuthorIds, new SelectList(Model.Authors, "Id", "Name") , new { @class = "form-control", @multiple = "true" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">New authors</label>
+                <div class="col-md-10">
+                    <input name="newAuthors" class="form-control" placeholder="Enter new authors (if necessary) separated by commas" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Genres, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.GenreIds, new SelectList(Model.Genres, "Id", "Name"), new {@class = "form-control", @multiple="true"})
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-md-2">New Genres</label>
+                <div class="col-md-10">
+                    <input name="newGenres" class="form-control" placeholder="Enter new genres (if necessary) separated by commas" />
+                </div>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextAreaFor(model => model.Description, rows:5, columns:1, htmlAttributes: new { @class = "form-control" })
@@ -40,11 +67,18 @@
 
             <div class="form-group">
                 <label class="control-label col-md-2">Load image</label>
-                <div class="col-md-10">
-                    <label class="btn btn-default">Browse<input type="file" name="file" id="browse"></label>                   
+                <div class="col-md-2">
+                    <label class="btn btn-default">Browse<input type="file" name="ImageFile" style="display: none;"></label>
                 </div>
-             </div>
+            </div>
 
+            <div class="form-group">
+                <label class="control-label col-md-2">Load book</label>
+                <div class="col-md-2">
+                    <label class="btn btn-default">Browse<input type="file" name="ImageFile" style="display: none;"></label>
+                </div>
+            </div>
+            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="AddBook" class="btn btn-success" />
@@ -57,4 +91,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-

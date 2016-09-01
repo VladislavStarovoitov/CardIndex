@@ -22,7 +22,7 @@ namespace DAL.Mappers
             };
             foreach (var author in dalBook.Authors)
             {
-                book.Authors.Add(new Author() { Name = author });
+    //            book.Authors.Add(new Author() { Name = author });
             }
             return book;            
         }
@@ -36,7 +36,7 @@ namespace DAL.Mappers
                 Description = book.Description,
                 Image = book.Image,
                 Year = book.Year,
-                Authors = book.Authors.Select(a => a.Name)
+              //  Authors = book.Authors.Select(a => a.Name)
             };
         }
     }
