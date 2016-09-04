@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ORM
 {
-    public class Genre
+    public class Genre : IEntity
     {
         public int Id { get; set; }
 

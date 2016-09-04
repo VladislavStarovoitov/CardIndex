@@ -18,13 +18,10 @@ namespace BLL.Services
             _unitOfWork = unitOfWork;
         }
 
-        public bool AddBook(DtoBook dtoBook, string newAuthors, string newGenres)
+        public bool AddBook(DtoBook dtoBook, IEnumerable<string> newAuthors, IEnumerable<string> newGenres)
         {
             var result = false;
-            if (newAuthors.Equals(string.Empty) && newGenres.Equals(string.Empty))
-                result = _unitOfWork.Books.Create(dtoBook);
-            else
-                result = _unitOfWork.Books.Create(dtoBook, newAuthors.ToTagArray(), newGenres.ToTagArray());          
+            result = _unitOfWork.Books.Create(dtoBook, newAuthors, newGenres);          
             if (result)
             {
                 _unitOfWork.Commit();

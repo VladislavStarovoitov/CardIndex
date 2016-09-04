@@ -18,12 +18,10 @@ namespace DAL.Mappers
                 Name = dalBook.Name,
                 Description = dalBook.Description,
                 Image = dalBook.Image,
-                Year = dalBook.Year
+                Year = dalBook.Year,
+                Authors = dalBook.Authors.Select(a => new Author() { Name = a.Name, Id = a.Id }).ToList(),
+                Genres = dalBook.Genres.Select(a => new Genre() { Name = a.Name, Id = a.Id }).ToList()
             };
-            foreach (var author in dalBook.Authors)
-            {
-    //            book.Authors.Add(new Author() { Name = author });
-            }
             return book;            
         }
 

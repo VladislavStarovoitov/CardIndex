@@ -14,15 +14,19 @@ namespace MVCPL.Models
 
         [Required]
         public string Name { get; set; }
+        public int Year { get; set; }
+        public string Description { get; set; }
+
         public List<Author> Authors { get; set; }
-        public IEnumerable<int> AuthorIds { get; set; }
+        public IEnumerable<int> AuthorIds { get; set; }           
 
         public List<Genre> Genres { get; set; }
         public IEnumerable<int> GenreIds { get; set; }
 
-        public int Year { get; set; }
-        public string Description { get; set; }
-
+        //Наверно стоит отделить 
+        public string NewAuthors { get; set; }
+        public string NewGenres { get; set; }
+        //
         public HttpPostedFileBase ImageFile { get; set; }
         public byte[] Image { get; set; }
 

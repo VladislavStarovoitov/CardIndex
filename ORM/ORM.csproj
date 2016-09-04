@@ -70,6 +70,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="CardIndex.cs" />
     <Compile Include="Genre.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Migrations\201608311837383_InitialCreate.cs" />
     <Compile Include="Migrations\201608311837383_InitialCreate.Designer.cs">
       <DependentUpon>201608311837383_InitialCreate.cs</DependentUpon>

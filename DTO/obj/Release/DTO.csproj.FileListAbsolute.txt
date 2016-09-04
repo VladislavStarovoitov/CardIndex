@@ -1,0 +1,4 @@
+E:\для учебы\курсы\проект\CardIndex\DTO\bin\Release\DTO.dll
+E:\для учебы\курсы\проект\CardIndex\DTO\bin\Release\DTO.pdb
+E:\для учебы\курсы\проект\CardIndex\DTO\obj\Release\DTO.dll
+E:\для учебы\курсы\проект\CardIndex\DTO\obj\Release\DTO.pdb

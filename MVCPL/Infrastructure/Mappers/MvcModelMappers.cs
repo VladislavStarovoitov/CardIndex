@@ -11,19 +11,19 @@ namespace MVCPL.Infrastructure.Mappers
     {
         public static DtoBook ToDtoBook(this BookViewModel book)
         {
-            var dtoBook = new DtoBook();
-            dtoBook.Id = book.Id;
-            dtoBook.Name = book.Name;
-            dtoBook.Description = book.Description;
-            dtoBook.Year = book.Year;
-            dtoBook.Image = book.Image;
-            dtoBook.Genres = new List<DtoGenre>(book.GenreIds.Select(a => new DtoGenre() { Id = a, Name = String.Empty }));
-            dtoBook.Authors = new List<DtoAuthor>(book.AuthorIds.Select(a => new DtoAuthor() { Id = a, Name = String.Empty }));
-
-            return dtoBook;
+            return new DtoBook()
+            {
+                Id = book.Id,
+                Name = book.Name,
+                Description = book.Description,
+                Year = book.Year,
+                Image = book.Image,
+                Genres = new List<DtoGenre>(book.GenreIds.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
+                Authors = new List<DtoAuthor>(book.AuthorIds.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
+            };
         }
 
-        public static BookViewModel ToMvcModelBook(this DtoBook dtoBook)
+        public static BookViewModel ToBookViewModel(this DtoBook dtoBook)
         {
             return new BookViewModel()
             {

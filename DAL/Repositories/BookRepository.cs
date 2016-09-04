@@ -20,43 +20,29 @@ namespace DAL.Repositories
             _dataBase = dataBase;
         }
 
-        public bool Create(DtoBook entity)
+        bool IRepository<DtoBook>.Create(DtoBook entity)
+        {
+            return Create(entity, null, null);
+        }
+
+        public bool Create(DtoBook entity, IEnumerable<string> newAuthors, IEnumerable<string> newGenres)
         {
             Book ormBook = entity.ToOrmBook();
             var bookExists = Contains(ormBook);
             if (!bookExists)
             {
+                //если дублируется выкидывает NotInvalideOpExc
+                UpdateTags<Author>(ormBook.Authors);
+                UpdateTags<Genre>(ormBook.Genres);
+                //два вызова против одного
+                if (!ReferenceEquals(newAuthors, null))
+                    AddNewTags<Author>(ormBook.Authors, newAuthors.Select(nA => new Author { Name = nA }));
+                if (!ReferenceEquals(newGenres, null))
+                    AddNewTags<Genre>(ormBook.Genres, newGenres.Select(nG => new Genre { Name = nG }));
 
-                var existAuthors = ormBook.Authors.Select(ormA => _dataBase.Set<Author>().Where(a => a.Name == ormA.Name).FirstOrDefault()).ToList();
-                var authorList = ormBook.Authors.ToList();
-                ormBook.Authors = new List<Author>();
-                foreach (var author in existAuthors)
-                { 
-                    if (!ReferenceEquals(author, null))
-                    {
-                        authorList.RemoveAll(a => string.Compare(a.Name, author.Name) == 0);
-                        author.Books.Add(ormBook);
-                        _dataBase.Set<Author>().Attach(author);
-                        _dataBase.Entry(author).State = EntityState.Modified;
-                    }
-                }
-                ((List<Author>)ormBook.Authors).AddRange(authorList);
                 _dataBase.Set<Book>().Add(ormBook);
             }
             return !bookExists;
-        }
-
-        public bool Create(DtoBook entity, string[] newAuthors, string[] newGenres)
-        {
-            Book ormBook = entity.ToOrmBook();
-            var bookExists = Contains(ormBook);
-            var existGenres = _dataBase.Set<Genre>().Where(g => newGenres.Contains(g.Name));
-            foreach (var item in existGenres)
-            {
-                ormBook.Genres.Add(item);
-            }
-            //var existAuthors = ormBook.Authors.Select(ormA => _dataBase.Set<Author>().Where(a => a.Name == ormA.Name).FirstOrDefault()).ToList();
-            return true;
         }
 
         public IEnumerable<DtoBook> GetAll()
@@ -69,29 +55,33 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
-        private bool Contains(Book ormBook)
+        private bool Contains(Book ormBook) //проверить
         {
-            var books = _dataBase.Set<Book>().Include("Authors").Where(b => b.Name == ormBook.Name).ToList();
-            bool bookExists = false;
-            foreach (var book in books)
-            {
-                foreach (var author in book.Authors)
-                {
-                    foreach (var ormAuther in ormBook.Authors)
-                    {
-                        if (ormAuther.Name == author.Name)
-                        {
-                            bookExists = true;
-                            break;
-                        }
-                    }
-                    if (bookExists)
-                        break;
-                }
-                if (bookExists)
-                    break;
-            }
+            var authors = ormBook.Authors.Select(a => a.Name);
+            bool bookExists = _dataBase.Set<Author>()
+                              .Where(a => authors.Contains(a.Name))
+                              .Any(a => a.Books
+                                  .Any(b => b.Name == ormBook.Name));
             return bookExists;
+        }
+
+        private void AddNewTags<TEntity>(ICollection<TEntity> tagCollection, IEnumerable<TEntity> newTags) where TEntity : class, IEntity
+        {
+            foreach (var item in newTags)
+            {
+                tagCollection.Add(item);
+            }
+        }
+
+        private void UpdateTags<TEntity>(ICollection<TEntity> tagCollection) where TEntity : class, IEntity
+        {
+            foreach (var item in tagCollection)
+            {
+                _dataBase.Set<TEntity>().Attach(item);
+                var entry = _dataBase.Entry(item);
+                entry.State = EntityState.Modified;
+                entry.Property(e => e.Name).IsModified = false;
+            }
         }
     }
 }
