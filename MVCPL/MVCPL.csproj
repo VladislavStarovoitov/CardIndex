@@ -190,6 +190,10 @@
     </Compile>
     <Compile Include="Infrastructure\Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\Mappers\MvcModelMappers.cs" />
+    <Compile Include="Infrastructure\ModelBinders\BookModelBinder.cs" />
+    <Compile Include="Infrastructure\ModelBinders\BookModelBinderEx.cs" />
+    <Compile Include="Infrastructure\ModelValidatorProviders\BookValidationProvider.cs" />
+    <Compile Include="Infrastructure\ModelValidatorProviders\BookValidator.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
@@ -204,10 +208,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chosen.css" />
     <Content Include="Content\chosen.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -261,6 +265,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

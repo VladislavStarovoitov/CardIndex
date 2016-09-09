@@ -10,7 +10,7 @@
     @using (Html.BeginForm("AddBook", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary()
         <div class="form-horizontal">
             <hr />            
             <div class="form-group">
@@ -32,7 +32,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Authors, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.AuthorIds, new SelectList(Model.Authors, "Id", "Name") , new { @class = "form-control", @multiple = "true" })
+                    @Html.DropDownListFor(model => model.Authors, new SelectList(Model.Authors, "Id", "Name") , new { @class = "form-control", @multiple = "true" })
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Genres, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.GenreIds, new SelectList(Model.Genres, "Id", "Name"), new {@class = "form-control", @multiple="true"})
+                    @Html.DropDownListFor(model => model.Genres, new SelectList(Model.Genres, "Id", "Name"), new {@class = "form-control qwerty", @multiple="true"})
                 </div>
             </div>
             
@@ -75,7 +75,7 @@
             <div class="form-group">
                 <label class="control-label col-md-2">Load book</label>
                 <div class="col-md-2">
-                    <label class="btn btn-default">Browse<input type="file" name="ImageFile" style="display: none;"></label>
+                    <label class="btn btn-default">Browse<input type="file" name="BookFile" style="display: none;"></label>
                 </div>
             </div>
             
@@ -86,6 +86,12 @@
             </div>
         </div>
     }
+   @* <script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script>
+        $(document).ready(function () {
+            $(".qwerty").chosen();
+        })
+    </script>
 }
 
 @section Scripts {

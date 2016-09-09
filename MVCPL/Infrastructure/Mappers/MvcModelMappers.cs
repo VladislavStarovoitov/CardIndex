@@ -18,8 +18,8 @@ namespace MVCPL.Infrastructure.Mappers
                 Description = book.Description,
                 Year = book.Year,
                 Image = book.Image,
-                Genres = new List<DtoGenre>(book.GenreIds.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
-                Authors = new List<DtoAuthor>(book.AuthorIds.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
+                //Genres = new List<DtoGenre>(book.GenreIds.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
+                //Authors = new List<DtoAuthor>(book.AuthorIds.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
             };
         }
 

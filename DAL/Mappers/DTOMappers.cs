@@ -20,7 +20,7 @@ namespace DAL.Mappers
                 Image = dalBook.Image,
                 Year = dalBook.Year,
                 Authors = dalBook.Authors.Select(a => new Author() { Name = a.Name, Id = a.Id }).ToList(),
-                Genres = dalBook.Genres.Select(a => new Genre() { Name = a.Name, Id = a.Id }).ToList()
+                Genres = dalBook.Genres.Select(a => new Genre() { Name = a.Name, Id = a.Id }).ToList() //List из-за Icollection
             };
             return book;            
         }
@@ -34,7 +34,8 @@ namespace DAL.Mappers
                 Description = book.Description,
                 Image = book.Image,
                 Year = book.Year,
-              //  Authors = book.Authors.Select(a => a.Name)
+                Authors = book.Authors.Select(a => new DtoAuthor { Name = a.Name, Id = a.Id }).ToList(),
+                Genres = book.Genres.Select(g => new DtoGenre { Name = g.Name, Id = g.Id }).ToList()
             };
         }
     }

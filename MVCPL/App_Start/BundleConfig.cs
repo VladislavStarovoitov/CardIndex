@@ -13,7 +13,8 @@ namespace MVCPL
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*",
-                        "~/Scripts/chosen.jquery.js"));
+                        "~/Scripts/chosen.jquery.js",
+                        "~/Scripts/prism.js"));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -26,9 +27,11 @@ namespace MVCPL
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/chosen.css"));
+                      "~/Content/bootstrap.css",
+                      "~/Content/chosen.css",
+                      "~/Content/prism.css",
+                      "~/Content/style"));
         }
     }
 }

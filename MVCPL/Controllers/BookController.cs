@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BLL.Interface.Services;
+using BLL.Interface;
 using MVCPL.Infrastructure.Mappers;
 using MVCPL.Infrastructure;
 using BLL;
@@ -40,43 +41,37 @@ namespace MVCPL.Controllers
         [HandleError(ExceptionType = typeof(InvalidOperationException))]
         public ActionResult AddBook(BookViewModel book)
         {
+            TryValidateModel(book);
             bool isAdded = false;
             if (ReferenceEquals(book.ImageFile, null))
                 ModelState.AddModelError("", "You should load image");
- //вынести в ValidObj //temp проверка новых жанров на повторение с существующими
-            var genres = book.NewGenres.ToTagArray();
-            var authors = book.NewAuthors.ToTagArray();
-            var existGenres = (List<Genre>)TempData.Peek("genres");
-            genres = genres.Where(g => !existGenres.Select(eG => eG.Name).Contains(g)).Distinct().ToArray();
-            //
+            
             //temp2 Проверка на корректность обновляемых данных
-            IEnumerable<int> existGenreIds = existGenres.Select(eG => eG.Id);
-            foreach (var item in book.GenreIds)
-            {
-                if (!existGenreIds.Contains(item))
-                {
-                    ModelState.AddModelError("", "Choose correct genres");
-                    break;
-                }
-            }
+            //IEnumerable<int> existGenreIds = existGenres.Select(eG => eG.Id);
+            //foreach (var item in book.GenreIds)
+            //{
+            //    if (!existGenreIds.Contains(item))
+            //    {
+            //        ModelState.AddModelError("", "Choose correct genres");
+            //        break;
+            //    }
+            //}
             //
             if (ModelState.IsValid)
             {
                 byte[] image = new byte[book.ImageFile.ContentLength];
                 book.ImageFile.InputStream.Read(image, 0, book.ImageFile.ContentLength);
                 book.Image = image;
-                isAdded = _bookService.AddBook(book.ToDtoBook(), authors, genres);
+                //isAdded = _bookService.AddBook(book.ToDtoBook(), authors, genres);
+               
+                if (isAdded)
+                {
+                    ViewBag.Title = "Success";
+                    return View(book);
+                }
+                book.Genres = (List<Genre>)TempData.Peek("genres");
+                ModelState.AddModelError("", "This book exists");
             }
-            else
-            {
-                book.Genres = existGenres;
-            }
-            if (isAdded)
-            {
-                ViewBag.Title = "Success";
-                return View(book);
-            }
-            ModelState.AddModelError("", "This book exists");
             return View(book);
         }
 
