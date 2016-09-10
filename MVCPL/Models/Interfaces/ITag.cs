@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Interface
+namespace MVCPL.Models.Interfaces
 {
-    public interface IModel
+    interface ITag
     {
         int Id { get; set; }
         string Name { get; set; }

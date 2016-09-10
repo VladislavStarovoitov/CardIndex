@@ -16,7 +16,7 @@ namespace MVCPL
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Book", action = "AddBook", id = UrlParameter.Optional }
+                defaults: new { controller = "Book", action = "Add", id = UrlParameter.Optional }
             );
         }
     }

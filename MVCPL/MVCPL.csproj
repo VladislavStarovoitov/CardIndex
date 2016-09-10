@@ -197,6 +197,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\Interfaces\ITag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -249,7 +250,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Book\AddBook.cshtml" />
+    <Content Include="Views\Book\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

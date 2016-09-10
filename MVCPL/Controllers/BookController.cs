@@ -25,17 +25,20 @@ namespace MVCPL.Controllers
         {
             return View();
         }
-
+        
+        [ActionName("Add")]
         public ActionResult AddBook()
         {
             var book = new BookViewModel();
             book.Authors.AddRange(new List<Author> { new Author { Id = 26, Name = "Емец" }, new Author { Id = 2, Name = "Старовойтов" } });
             book.Genres.AddRange(new List<Genre> { new Genre { Id = 1, Name = "fantasy" }, new Genre { Id = 2, Name = "drama" } });
             TempData["genres"] = book.Genres;
+            TempData["authors"] = book.Authors;
             return View(book);
         }
 
         [HttpPost]
+        [ActionName("Add")]
         [ValidateAntiForgeryToken]
         //добавить свою страницу с ошибкой
         [HandleError(ExceptionType = typeof(InvalidOperationException))]
@@ -45,33 +48,23 @@ namespace MVCPL.Controllers
             bool isAdded = false;
             if (ReferenceEquals(book.ImageFile, null))
                 ModelState.AddModelError("", "You should load image");
-            
-            //temp2 Проверка на корректность обновляемых данных
-            //IEnumerable<int> existGenreIds = existGenres.Select(eG => eG.Id);
-            //foreach (var item in book.GenreIds)
-            //{
-            //    if (!existGenreIds.Contains(item))
-            //    {
-            //        ModelState.AddModelError("", "Choose correct genres");
-            //        break;
-            //    }
-            //}
-            //
+
             if (ModelState.IsValid)
             {
                 byte[] image = new byte[book.ImageFile.ContentLength];
                 book.ImageFile.InputStream.Read(image, 0, book.ImageFile.ContentLength);
                 book.Image = image;
-                //isAdded = _bookService.AddBook(book.ToDtoBook(), authors, genres);
+                isAdded = _bookService.AddBook(book.ToDtoBook(), book.NewAuthors, book.NewGenres);
                
                 if (isAdded)
                 {
                     ViewBag.Title = "Success";
                     return View(book);
-                }
-                book.Genres = (List<Genre>)TempData.Peek("genres");
+                }                
                 ModelState.AddModelError("", "This book exists");
             }
+            book.Genres = (List<Genre>)TempData.Peek("genres");
+            book.Authors = (List<Author>)TempData.Peek("authors");
             return View(book);
         }
 

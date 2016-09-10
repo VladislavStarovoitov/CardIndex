@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCPL.Infrastructure.ModelBinders;
 using System.ComponentModel.DataAnnotations;
+using MVCPL.Models.Interfaces;
 
 namespace MVCPL.Models
 {
@@ -55,13 +56,13 @@ namespace MVCPL.Models
         }
     }
 
-    public class Author
+    public class Author : ITag
     {
         public int Id { get; set; }
         public string Name { get; set; }
     }
 
-    public class Genre
+    public class Genre : ITag
     {
         public int Id { get; set; }
         public string Name { get; set; }

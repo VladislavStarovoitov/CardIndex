@@ -19,10 +19,10 @@ namespace MVCPL.Infrastructure.ModelBinders
             string name = BindProperty<string>("Name");
             string description = BindProperty<string>("Description");
 
-            IEnumerable<int> authors = BindProperty<IEnumerable<int>>("Authors") ?? new List<int>();
+            string[] authors = BindProperty<string[]>("Authors") ?? new string[0];
             IEnumerable<string> newAuthors = BindProperty<string>("NewAuthors").ToTagArray();
 
-            IEnumerable<int> genres = BindProperty<IEnumerable<int>>("Genres") ?? new List<int>();
+            string[] genres = BindProperty<string[]>("Genres") ?? new string[0];
             IEnumerable<string> newGenres = BindProperty<string>("NewGenres").ToTagArray();
 
             HttpPostedFileBase imageFile = BindProperty<HttpPostedFileBase>("ImageFile");
@@ -37,9 +37,10 @@ namespace MVCPL.Infrastructure.ModelBinders
                 ImageFile = imageFile
             };
 
-            book.Authors = authors.Select(a => new Author { Name = string.Empty, Id = a }).ToList();
-            book.Genres = genres.Select(g => new Genre { Name = string.Empty, Id = g }).ToList();
-            
+            int id;
+            book.Authors = authors.Select(a => new Author { Name = string.Empty, Id = int.TryParse(a, out id) ? id : -1 }).ToList();
+            book.Genres = genres.Select(g => new Genre { Name = string.Empty, Id = int.TryParse(g, out id) ? id : -1 }).ToList();
+
             return book;
         }
 

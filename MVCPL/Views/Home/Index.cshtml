@@ -1,16 +1,19 @@
 ﻿@section Body{
-@using MVCPL.Infrastructure.Helpers
-@model MVCPL.Models.IndexViewModel
-@{
-    ViewBag.Title = "Home Page";
-}
+    @using MVCPL.Infrastructure.Helpers
+    @using MVCPL.Models
 
-    @*<div class="row"> СДЕЛАТЬ СТРОЧНЫЙ ХЕЛПЕР
+    @model MVCPL.Models.IndexViewModel
+
+    @{
+        ViewBag.Title = "Home Page";
+    }
+
+    @helper ShowBook(BookViewModel book)
+    {
         <div class="col-lg-9 box">
             <div>
-                <h1>Getting started</h1>
-заменить на url.action!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                <img src="http://static3.anidub.com/online/poster/6e5f596c83.jpg" class="img-rounded box-image" />
+                <h1>@book.Name</h1>
+                <img src="data:image/gif;base64,@Convert.ToBase64String(book.Image)" class="img-rounded box-image" />
                 <p>
                     ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
                     enables a clean separation of concerns and gives you full control over markup
@@ -20,11 +23,11 @@
             <div class="clear"></div>
             <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
         </div>
-    </div>*@
+    }
 
     @foreach (var item in Model.Books)
     {
-        @Html.ShowBook(item);
+        @ShowBook(item);
     }
 
     <div class="clear"></div>

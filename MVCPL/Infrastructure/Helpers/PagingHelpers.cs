@@ -29,48 +29,5 @@ namespace MVCPL.Infrastructure.Helpers
             }
             return MvcHtmlString.Create(result.ToString());
         }
-
-        public static MvcHtmlString ShowBook(this HtmlHelper html, BookViewModel book)
-        {
-            TagBuilder[] tagsP = new TagBuilder[2];
-            for (int i = 0; i < 2; i++)
-            {
-                tagsP[i] = new TagBuilder("p");
-            }
-            tagsP[0].InnerHtml = book.Description;
-
-            TagBuilder[] tagsDiv = new TagBuilder[4];
-            for (int i = 0; i < 4; i++)
-            {
-                tagsDiv[i] = new TagBuilder("div");
-            }
-           
-            TagBuilder tagH1 = new TagBuilder("h1");
-            tagH1.InnerHtml = book.Name;
-
-            var base64 = Convert.ToBase64String(book.Image);
-            var imgSrc = String.Format($"data:image/gif;base64,{base64}");
-
-            TagBuilder tagImg = new TagBuilder("img");
-            tagImg.MergeAttribute("src", imgSrc);
-            tagImg.AddCssClass("img-rounded");
-            tagImg.AddCssClass("box-image");        
-
-            tagsDiv[0].InnerHtml = tagH1.ToString() + tagImg.ToString() + tagsP[0].ToString();
-            tagsDiv[1].AddCssClass("clear");
-
-            TagBuilder tagA = new TagBuilder("a");
-            tagA.InnerHtml = "Learn more »";
-            tagA.AddCssClass("btn btn-default");
-            tagA.MergeAttribute("href", "http://go.microsoft.com/fwlink/?LinkId=301865");
-
-            tagsP[1].InnerHtml = tagA.ToString();
-
-            tagsDiv[2].AddCssClass("col-lg-9");
-            tagsDiv[2].AddCssClass("box");
-            tagsDiv[2].InnerHtml = tagsDiv[0].ToString() + tagsDiv[1].ToString() + tagsP[1].ToString();
-
-            return new MvcHtmlString(tagsDiv[2].ToString());
-        }
     }
 }
