@@ -6,40 +6,29 @@ using System.Web.Mvc;
 using System.Net.Mime;
 using System.IO;
 using MVCPL.Models;
+using MVCPL.Infrastructure.Mappers;
+using BLL.Interface.Services;
 
 namespace MVCPL.Controllers
 {
     public class HomeController : Controller
     {
-        BookViewModel[] _books = new BookViewModel[6];
+        private readonly IBookService _bookService;
 
-        public HomeController()
+        BookViewModel[] _books = new BookViewModel[2];
+
+        public HomeController(IBookService bookService)
         {
-            byte[] image;
-            using (var file = new FileStream(@"E:\bro.png", FileMode.Open))
-            {
-                image = new byte[file.Length];
-                file.Read(image, 0, image.Length);
-            }
-            var book = new BookViewModel() { Id = 1, Description = "Jast example, my Lord", Name = "G.O.D", Image = image };
-            for (int i = 0; i < 6; i++)
-            {
-                _books[i] = book;
-            }
+            _bookService = bookService;
         }
 
         public ActionResult Index(int page = 1)
-        {            
-            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _books.Count() };
-            IEnumerable<BookViewModel> booksPerPage = _books.Skip((page - 1) * info.PageSize).Take(info.PageSize);
-            IndexViewModel ivm = new IndexViewModel() { Books = booksPerPage, PageInfo = info };
-            return View(ivm);
-        }
-
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file)
         {
-            return RedirectToAction("Index");
+            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _bookService.BookCount() };
+            IEnumerable<BookViewModel> books = _bookService.GetBookRange((page - 1) * info.BooksPerPage, info.BooksPerPage)
+                                               .Select(b => b.ToBookViewModel());
+            IndexViewModel ivm = new IndexViewModel() { Books = books, PageInfo = info };
+            return View(ivm);
         }
 
         public ActionResult About()

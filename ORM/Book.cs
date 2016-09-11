@@ -25,6 +25,8 @@ namespace ORM
 
         public byte[] Image { get; set; }
 
+        public DateTime CreationDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Author> Authors { get; set; }
 

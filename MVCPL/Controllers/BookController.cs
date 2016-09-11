@@ -20,14 +20,13 @@ namespace MVCPL.Controllers
         {
             _bookService = bookService;
         }
-             
+
         public ActionResult Index()
         {
             return View();
         }
-        
-        [ActionName("Add")]
-        public ActionResult AddBook()
+
+        public ActionResult Add()
         {
             var book = new BookViewModel();
             book.Authors.AddRange(new List<Author> { new Author { Id = 26, Name = "Емец" }, new Author { Id = 2, Name = "Старовойтов" } });
@@ -38,11 +37,9 @@ namespace MVCPL.Controllers
         }
 
         [HttpPost]
-        [ActionName("Add")]
         [ValidateAntiForgeryToken]
-        //добавить свою страницу с ошибкой
         [HandleError(ExceptionType = typeof(InvalidOperationException))]
-        public ActionResult AddBook(BookViewModel book)
+        public ActionResult Add(BookViewModel book)
         {
             TryValidateModel(book);
             bool isAdded = false;
@@ -55,12 +52,12 @@ namespace MVCPL.Controllers
                 book.ImageFile.InputStream.Read(image, 0, book.ImageFile.ContentLength);
                 book.Image = image;
                 isAdded = _bookService.AddBook(book.ToDtoBook(), book.NewAuthors, book.NewGenres);
-               
+
                 if (isAdded)
                 {
                     ViewBag.Title = "Success";
                     return View(book);
-                }                
+                }
                 ModelState.AddModelError("", "This book exists");
             }
             book.Genres = (List<Genre>)TempData.Peek("genres");

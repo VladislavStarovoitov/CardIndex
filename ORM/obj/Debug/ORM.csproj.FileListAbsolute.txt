@@ -10,3 +10,4 @@ E:\для учебы\курсы\проект\CardIndex\ORM\bin\Debug\EntityFrame
 E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.InitialCreate.resources
 E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.csproj.GenerateResource.Cache
 E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddGenre.resources
+E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddCreationDateToBook.resources

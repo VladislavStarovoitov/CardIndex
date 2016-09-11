@@ -17,6 +17,7 @@ namespace MVCPL
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Book", action = "Add", id = UrlParameter.Optional }
+                //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

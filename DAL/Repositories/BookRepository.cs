@@ -20,6 +20,11 @@ namespace DAL.Repositories
             _dataBase = dataBase;
         }
 
+        public int Count()
+        {
+            return _dataBase.Set<Book>().Count();
+        }
+
         bool IRepository<DtoBook>.Create(DtoBook entity)
         {
             return Create(entity, null, null);
@@ -40,6 +45,7 @@ namespace DAL.Repositories
                 if (!ReferenceEquals(newGenres, null))
                     AddNewTags<Genre>(ormBook.Genres, newGenres.Select(nG => new Genre { Name = nG }));
 
+                ormBook.CreationDate = DateTime.Now;
                 _dataBase.Set<Book>().Add(ormBook);
             }
             return !bookExists;
@@ -53,6 +59,16 @@ namespace DAL.Repositories
         public DtoBook GetById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<DtoBook> GetRange(int skipCount, int count)
+        {
+            return _dataBase.Set<Book>()
+                .OrderByDescending(b => b.CreationDate)
+                .Skip(skipCount)
+                .Take(count)
+                .AsEnumerable()
+                .Select(b => b.ToDtoBook());
         }
 
         private bool Contains(Book ormBook) //проверить

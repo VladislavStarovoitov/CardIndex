@@ -23,12 +23,22 @@ namespace BLL.Services
         public bool AddBook(DtoBook dtoBook, IEnumerable<string> newAuthors, IEnumerable<string> newGenres)
         {
             var result = false;
-            result = _unitOfWork.Books.Create(dtoBook, newAuthors, newGenres);          
+            result = _unitOfWork.Books.Create(dtoBook, newAuthors, newGenres);
             if (result)
             {
                 _unitOfWork.Commit();
             }
             return result;
+        }
+
+        public int BookCount()
+        {
+            return _unitOfWork.Books.Count();
+        }
+
+        public IEnumerable<DtoBook> GetBookRange(int skipCount, int count)
+        {
+            return _unitOfWork.Books.GetRange(skipCount, count);
         }
 
         public void Dispose()

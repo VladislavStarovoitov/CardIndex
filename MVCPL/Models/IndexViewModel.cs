@@ -14,16 +14,16 @@ namespace MVCPL.Models
 
     public class PageInfo
     {
-        public int PageNumber { get; set; } 
-        public int PageSize { get; }
-        public int TotalItems { get; set; } 
-        public int TotalPages 
+        public int PageNumber { get; set; }
+        public int BooksPerPage { get; }
+        public int TotalItems { get; set; }
+        public int TotalPages
         {
-            get { return (int)Math.Ceiling((decimal)TotalItems / PageSize); }
+            get { return (int)Math.Ceiling((decimal)TotalItems / BooksPerPage); }
         }
         public PageInfo()
         {
-            PageSize = int.Parse(WebConfigurationManager.AppSettings["itemsPerPage"]);
+            BooksPerPage = int.Parse(WebConfigurationManager.AppSettings["booksPerPage"]);
         }
     }
 }
