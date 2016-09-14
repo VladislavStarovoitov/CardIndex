@@ -19,6 +19,40 @@ namespace MVCPL.Controllers
             _userService = userService;
         }
 
+
+        [HttpGet]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel loginModel ,string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Membership.ValidateUser(loginModel.Email, loginModel.Password))//Проверяет учетные данные пользователя и управляет параметрами пользователей
+                {
+                    FormsAuthentication.SetAuthCookie(loginModel.Email, loginModel.RememberMe);
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Incorrect login or password.");
+                }
+            }
+            return View(loginModel);
+        }
+
         public ActionResult Register()
         {
             return View();

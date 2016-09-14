@@ -14,7 +14,7 @@ namespace MVCPL.Models
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Enter your correct email address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Create a password")]
+        [Required(ErrorMessage = "You can't leave this empty.")]
         [StringLength(20, ErrorMessage = "Short passwords are easy to guess. Try one with at least {0} characters.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Enter your password")]

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using BLL.Interface.Services;
-using System.Web.Mvc;
 using System.Web.Helpers;
 using DTO;
 
@@ -20,19 +19,25 @@ namespace MVCPL.Infrastructure.Providers
             var user = new DtoUser
             {
                 Email = email,
-                Password = password,
+                Password = Crypto.HashPassword(password),
                 CreationDate = DateTime.Now
             };
 
             var role = _roleService.GetRole("User");
-            if (!ReferenceEquals(role, null))
+            if (ReferenceEquals(role, null))
             {
-                user.Roles = new List<DtoRole> { role };
+                return null;                
+            }
+            user.Roles = new List<DtoRole> { role };
+
+            bool creationResult = _userService.CreateUser(user);
+            if (creationResult)
+            {
+                var membershipUser = GetUser(email, false);
+                return membershipUser;
             }
 
-            _userService.CreateUser(user);
-            var membershipUser = GetUser(email, false);
-            return membershipUser;
+            return null;
         }
 
         public override MembershipUser GetUser(string email, bool userIsOnline)
@@ -48,6 +53,17 @@ namespace MVCPL.Infrastructure.Providers
                 DateTime.MinValue, DateTime.MinValue);
 
             return memberUser;
+        }
+
+        public override bool ValidateUser(string email, string password)
+        {
+            var user = _userService.GetUserByEmail(email);
+
+            if (!ReferenceEquals(user, null) && Crypto.VerifyHashedPassword(user.Password, password))
+            {
+                return true;
+            }
+            return false;
         }
 
         #region NotImplemented
@@ -199,11 +215,6 @@ namespace MVCPL.Infrastructure.Providers
         }
 
         public override void UpdateUser(MembershipUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool ValidateUser(string username, string password)
         {
             throw new NotImplementedException();
         }

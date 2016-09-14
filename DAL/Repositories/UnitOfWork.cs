@@ -11,7 +11,9 @@ namespace DAL.Repositories
     public sealed class UnitOfWork : IUnitOfWork
     {
         private DbContext _dataBase;
-        private BookRepository _bookRespository;
+        private IBookRepository _bookRespository;
+        private IUserRepository _userRespository;
+        private IRoleRepository _roleRespository;
 
         private bool _disposed = false;
 
@@ -27,6 +29,26 @@ namespace DAL.Repositories
                 if (ReferenceEquals(_bookRespository, null))
                     _bookRespository = new BookRepository(_dataBase);
                 return _bookRespository;
+            }
+        }
+
+        public IUserRepository Users
+        {
+            get
+            {
+                if (ReferenceEquals(_userRespository, null))
+                    _userRespository = new UserRepository(_dataBase);
+                return _userRespository;
+            }
+        }
+
+        public IRoleRepository Roles 
+        {
+            get
+            {
+                if (ReferenceEquals(_roleRespository, null))
+                    _roleRespository = new RoleRepository(_dataBase);
+                return _roleRespository;
             }
         }
 

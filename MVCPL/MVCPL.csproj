@@ -197,9 +197,11 @@
     <Compile Include="Infrastructure\ModelValidatorProviders\BookValidator.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\Providers\CustomMembershipProvider.cs" />
+    <Compile Include="Infrastructure\Providers\CustomRoleProvider.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Models\Interfaces\ITag.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -255,6 +257,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Book\Add.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

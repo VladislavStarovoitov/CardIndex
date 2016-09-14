@@ -9,7 +9,7 @@ namespace BLL.Interface.Services
 {
     public interface IUserService
     {
-        void CreateUser(DtoUser dtoUser);
+        bool CreateUser(DtoUser dtoUser);
         DtoUser GetUserByEmail(string email);
     }
 }
