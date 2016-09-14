@@ -10,19 +10,22 @@ namespace MVCPL.Infrastructure.ModelBinders
 {
     public class BookModelBinder : IModelBinder
     {
-        IValueProvider _valueProvider;
+        private IValueProvider _valueProvider;
+        private ModelStateDictionary _modelState;
+
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             _valueProvider = bindingContext.ValueProvider;
+            _modelState = controllerContext.Controller.ViewData.ModelState;
 
             int year = BindProperty<int>("Year");
             string name = BindProperty<string>("Name");
             string description = BindProperty<string>("Description");
 
-            string[] authors = BindProperty<string[]>("Authors") ?? new string[0];
+            int[] authors = BindProperty<int[]>("AuthorsSelected");
             IEnumerable<string> newAuthors = BindProperty<string>("NewAuthors").ToTagArray();
 
-            string[] genres = BindProperty<string[]>("Genres") ?? new string[0];
+            int[] genres = BindProperty<int[]>("GenresSelected");
             IEnumerable<string> newGenres = BindProperty<string>("NewGenres").ToTagArray();
 
             HttpPostedFileBase imageFile = BindProperty<HttpPostedFileBase>("ImageFile");
@@ -32,24 +35,27 @@ namespace MVCPL.Infrastructure.ModelBinders
                 Name = name.Equals(string.Empty) ? null : name,
                 Year = year,
                 Description = description.Equals(string.Empty) ? null : description,
-                NewAuthors = newAuthors,//.Select(nA => new Author { Name = nA, Id = default(int) }),
-                NewGenres = newGenres,//.Select(nG => new Genre { Name = nG, Id = default(int) }),
+                NewAuthors = newAuthors,
+                NewGenres = newGenres,
                 ImageFile = imageFile
             };
-
-            int id;
-            book.Authors = authors.Select(a => new Author { Name = string.Empty, Id = int.TryParse(a, out id) ? id : -1 }).ToList();
-            book.Genres = genres.Select(g => new Genre { Name = string.Empty, Id = int.TryParse(g, out id) ? id : -1 }).ToList();
-
+            
             return book;
         }
 
         private T BindProperty<T>(string key)
         {
             var value = _valueProvider.GetValue(key);
-            if (!ReferenceEquals(value, null))
+            try
             {
-                return (T)value.ConvertTo(typeof(T));
+                if (!ReferenceEquals(value, null))
+                {
+                    return (T)value.ConvertTo(typeof(T));
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                _modelState.AddModelError(key, "Choose the correct data.");
             }
             return default(T);
         }

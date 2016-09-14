@@ -18,8 +18,8 @@ namespace MVCPL.Infrastructure.Mappers
                 Description = book.Description,
                 Year = book.Year,
                 Image = book.Image,
-                //Genres = new List<DtoGenre>(book.GenreIds.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
-                //Authors = new List<DtoAuthor>(book.AuthorIds.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
+                Genres = new List<DtoGenre>(book.GenresSelected.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
+                Authors = new List<DtoAuthor>(book.GenresSelected.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
             };
         }
 
@@ -30,6 +30,7 @@ namespace MVCPL.Infrastructure.Mappers
                 Id = dtoBook.Id,
                 Name = dtoBook.Name,
                 Authors = dtoBook.Authors.Select(a => a.ToMvcModelAuthor()).ToList(),
+                Genres = dtoBook.Genres.Select(a => a.ToMvcModelGenre()).ToList(),
                 Description = dtoBook.Description,
                 Year = dtoBook.Year,
                 Image = dtoBook.Image
@@ -42,6 +43,15 @@ namespace MVCPL.Infrastructure.Mappers
             {
                 Id = dtoAuthor.Id,
                 Name = dtoAuthor.Name
+            };
+        }
+
+        public static Genre ToMvcModelGenre(this DtoGenre dtoGenre)
+        {
+            return new Genre
+            {
+                Id = dtoGenre.Id,
+                Name = dtoGenre.Name
             };
         }
 

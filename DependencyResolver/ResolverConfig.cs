@@ -22,6 +22,7 @@ namespace DependencyResolver
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
 
             kernel.Bind<IBookService>().To<BookService>();
+            kernel.Bind<IUserService>().To<UserService>();
         }
     }
 }

@@ -17,19 +17,22 @@ namespace MVCPL.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Enter book name.")]
         public string Name { get; set; }
-
-        //[Range(0, 2016, ErrorMessage = "Year must be less than 2016")]
+        
         public int Year { get; set; }
+
+        [Required]
+
         public string Description { get; set; }
 
         public List<Author> Authors { get; set; }
         public IEnumerable<string> NewAuthors { get; set; }
-        //public IEnumerable<int> AuthorIds { get; set; }
+        public IEnumerable<int> AuthorsSelected { get; set; }
 
         public List<Genre> Genres { get; set; }
         public IEnumerable<string> NewGenres { get; set; }
-        //public IEnumerable<int> GenreIds { get; set; }
+        public IEnumerable<int> GenresSelected { get; set; }
 
         //Наверно стоит отделить 
         //public string NewAuthors { get; set; }
@@ -43,8 +46,8 @@ namespace MVCPL.Models
             Authors = new List<Author>();
             Genres = new List<Genre>();
 
-            //AuthorIds = new int[0];
-            //GenreIds = new int[0];
+            AuthorsSelected = new List<int>();
+            GenresSelected = new List<int>();
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

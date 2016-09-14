@@ -37,6 +37,14 @@ textarea {
     margin-bottom: 10px;
 }
 
+.info-container{
+    float: left;
+}
+
+.reset{
+    list-style: none;
+}
+
 .clear{
     clear: both;
 }

@@ -44,7 +44,7 @@ namespace MVCPL.Controllers
             TryValidateModel(book);
             bool isAdded = false;
             if (ReferenceEquals(book.ImageFile, null))
-                ModelState.AddModelError("", "You should load image");
+                ModelState.AddModelError("", "You should load image.");
 
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace MVCPL.Controllers
                     ViewBag.Title = "Success";
                     return View(book);
                 }
-                ModelState.AddModelError("", "This book exists");
+                ModelState.AddModelError("", "This book exists.");
             }
             book.Genres = (List<Genre>)TempData.Peek("genres");
             book.Authors = (List<Author>)TempData.Peek("authors");

@@ -1,13 +1,13 @@
-﻿@section body{
-    @model MVCPL.Models.BookViewModel
+﻿@model MVCPL.Models.BookViewModel
 
-    @{
-        ViewBag.Title = "Add Book";
-    }
+@{
+    ViewBag.Title = "Add Book";
+}
 
+@section body{
     <h2>Add Book</h2>
 
-    @using (Html.BeginForm("AddBook", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Add", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
@@ -30,9 +30,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Authors, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.AuthorsSelected, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Authors, new SelectList(Model.Authors, "Id", "Name") , new { @class = "form-control", @multiple = "true" })
+                    @Html.DropDownListFor(model => model.AuthorsSelected, new SelectList(Model.Authors, "Id", "Name") , new { @class = "form-control", @multiple = "true" })
                 </div>
             </div>
 
@@ -44,9 +44,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Genres, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.GenresSelected, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Genres, new SelectList(Model.Genres, "Id", "Name"), new {@class = "form-control qwerty", @multiple="true"})
+                    @Html.DropDownListFor(model => model.GenresSelected, new SelectList(Model.Genres, "Id", "Name"), new {@class = "form-control qwerty", @multiple="true"})
                 </div>
             </div>
             
@@ -81,7 +81,7 @@
             
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="AddBook" class="btn btn-success" />
+                    <input type="submit" value="Add" class="btn btn-success" />
                 </div>
             </div>
         </div>
