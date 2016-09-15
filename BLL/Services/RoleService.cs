@@ -18,7 +18,12 @@ namespace BLL.Services
             _unitOfWork = unitOfWork;
         }
 
-        public DtoRole GetRole(string name)
+        public DtoRole GetRoleById(int id)
+        {
+            return _unitOfWork.Roles.GetById(id);
+        }
+
+        public DtoRole GetRoleByName(string name)
         {
             return _unitOfWork.Roles.GetByName(name);
         }

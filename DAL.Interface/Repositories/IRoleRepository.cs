@@ -7,7 +7,7 @@ using DTO;
 
 namespace DAL.Interface.Repositories
 {
-    public interface IRoleRepository
+    public interface IRoleRepository : IRepository<DtoRole>
     {
         DtoRole GetByName(string name);
     }

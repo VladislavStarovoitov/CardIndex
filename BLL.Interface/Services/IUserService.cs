@@ -11,5 +11,6 @@ namespace BLL.Interface.Services
     {
         bool CreateUser(DtoUser dtoUser);
         DtoUser GetUserByEmail(string email);
+        IEnumerable<DtoRole> GetRolesForUser(string email);
     }
 }

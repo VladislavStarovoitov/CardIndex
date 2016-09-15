@@ -29,6 +29,11 @@ namespace BLL.Services
             return result;
         }
 
+        public IEnumerable<DtoRole> GetRolesForUser(string email)
+        {
+            return _unitOfWork.Users.GetRolesForUser(email);
+        }
+
         public DtoUser GetUserByEmail(string email)
         {
             return _unitOfWork.Users.GetByEmail(email);

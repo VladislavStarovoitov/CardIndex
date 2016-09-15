@@ -10,5 +10,6 @@ namespace DAL.Interface.Repositories
     public interface IUserRepository : IRepository<DtoUser>
     {
         DtoUser GetByEmail(string email);
+        IEnumerable<DtoRole> GetRolesForUser(string email);
     }
 }

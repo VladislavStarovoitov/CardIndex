@@ -14,10 +14,33 @@ namespace MVCPL.Infrastructure.Providers
         private IRoleService _roleService = (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
 
 
-        public override bool IsUserInRole(string username, string roleName)
+        public override bool IsUserInRole(string email, string roleName)
         {
-            throw new NotImplementedException();
+            var user = _userService.GetUserByEmail(email);
+
+            if (ReferenceEquals(user, null))
+                return false;
+
+            var userRole = _roleService.GetRoleById(user.Id);
+
+            if (!ReferenceEquals(userRole, null) && userRole.Name == roleName)
+            {
+                return true;
+            }
+
+            return false;
         }
+
+        public override string[] GetRolesForUser(string email)
+        {
+            var roles = _userService.GetRolesForUser(email);
+
+            if (ReferenceEquals(roles, null))
+                return new string[0];
+
+            return roles.Select(r => r.Name).ToArray();
+        }
+
         #region NotImplemented
         public override string ApplicationName
         {
@@ -53,11 +76,6 @@ namespace MVCPL.Infrastructure.Providers
         }
 
         public override string[] GetAllRoles()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string[] GetRolesForUser(string username)
         {
             throw new NotImplementedException();
         }

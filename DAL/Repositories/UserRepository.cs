@@ -29,6 +29,7 @@ namespace DAL.Repositories
             var rolesExists = _dataBase.Set<Role>()
                                  .Where(r => rolesId
                                      .Any(rI => rI == r.Id)).ToArray();
+
             if (rolesExists.Count() != entity.Roles.Count())
                 return false;
             ormUsers.Roles = rolesExists;
@@ -43,12 +44,22 @@ namespace DAL.Repositories
 
         public DtoUser GetByEmail(string email)
         {
-            return _dataBase.Set<User>().FirstOrDefault(u => u.Email == email)?.ToDtoUser();
+            return GetUser(email)?.ToDtoUser();
         }
 
         public DtoUser GetById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<DtoRole> GetRolesForUser(string email)
+        {
+            return GetUser(email)?.Roles.Select(r => r.ToDtoRole());
+        }
+
+        private User GetUser(string email)
+        {
+            return _dataBase.Set<User>().FirstOrDefault(u => u.Email == email);
         }
     }
 }

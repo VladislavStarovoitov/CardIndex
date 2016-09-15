@@ -23,7 +23,7 @@ namespace MVCPL.Infrastructure.Providers
                 CreationDate = DateTime.Now
             };
 
-            var role = _roleService.GetRole("User");
+            var role = _roleService.GetRoleByName("User");
             if (ReferenceEquals(role, null))
             {
                 return null;                
