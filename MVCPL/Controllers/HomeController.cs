@@ -8,6 +8,7 @@ using System.IO;
 using MVCPL.Models;
 using MVCPL.Infrastructure.Mappers;
 using BLL.Interface.Services;
+using System.Web.Configuration;
 
 namespace MVCPL.Controllers
 {
@@ -24,10 +25,11 @@ namespace MVCPL.Controllers
 
         public ActionResult Index(int page = 1)
         {
-            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _bookService.BookCount() };
-            IEnumerable<BookViewModel> books = _bookService.GetBookRange((page - 1) * info.BooksPerPage, info.BooksPerPage)
+            int rows = int.Parse(WebConfigurationManager.AppSettings["bookRows"]);
+            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _bookService.BookCount(), RowsPerPage = rows };
+            IEnumerable<BookViewModel> books = _bookService.GetBookRange((page - 1) * info.RowsPerPage, info.RowsPerPage)
                                                .Select(b => b.ToBookViewModel());
-            IndexViewModel ivm = new IndexViewModel() { Books = books, PageInfo = info };
+            BookPaginationViewModel ivm = new BookPaginationViewModel() { Books = books, PageInfo = info };
             return View(ivm);
         }
 

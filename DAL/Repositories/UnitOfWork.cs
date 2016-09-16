@@ -15,8 +15,6 @@ namespace DAL.Repositories
         private IUserRepository _userRespository;
         private IRoleRepository _roleRespository;
 
-        private bool _disposed = false;
-
         public UnitOfWork(DbContext dataBase)
         {
             _dataBase = dataBase;
@@ -57,15 +55,6 @@ namespace DAL.Repositories
             if (!ReferenceEquals(_dataBase, null))
             {
                 _dataBase.SaveChanges();
-            }
-        }
-
-        public void Dispose()
-        {
-            if (!_disposed)
-            {
-                _dataBase.Dispose();
-                _disposed = true;
             }
         }
     }

@@ -22,14 +22,19 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
                 </ul>
             </div>
+
         </div>
     </div>
     <div class="container body-content">
-        @RenderSection("Body")
+        <div class="row">
+            <div class="col-md-9 info-container">
+                @RenderSection("Body")
+            </div>
+            <div class="col-md-3 box" style="height: 50px;"></div>
+        </div>
+        @*<div class="clear"></div>*@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

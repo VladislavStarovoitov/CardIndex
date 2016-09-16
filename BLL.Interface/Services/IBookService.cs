@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace BLL.Interface.Services
 {
-    public interface IBookService : IDisposable
+    public interface IBookService
     {
         bool AddBook(DtoBook dtoBook, IEnumerable<string> newAuthors, IEnumerable<string> newGenres);
         int BookCount();
         IEnumerable<DtoBook> GetBookRange(int skipCount, int count);
+        DtoBook GetBookById(int id);
     }
 }

@@ -58,7 +58,7 @@ namespace DAL.Repositories
 
         public DtoBook GetById(int id)
         {
-            throw new NotImplementedException();
+            return _dataBase.Set<Book>().Find(id)?.ToDtoBook();
         }
 
         public IEnumerable<DtoBook> GetRange(int skipCount, int count)

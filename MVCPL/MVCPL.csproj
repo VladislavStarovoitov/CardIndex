@@ -199,9 +199,12 @@
     <Compile Include="Infrastructure\Providers\CustomMembershipProvider.cs" />
     <Compile Include="Infrastructure\Providers\CustomRoleProvider.cs" />
     <Compile Include="Models\BookViewModel.cs" />
-    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\BookPaginationViewModel.cs" />
+    <Compile Include="Models\CommentPaginationViewModel.cs" />
+    <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\Interfaces\ITag.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,6 +221,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\bg-new.png" />
+    <Content Include="Images\bro.png" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -228,9 +233,12 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -258,6 +266,9 @@
     <Content Include="Views\Book\Add.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Book\About.cshtml" />
+    <Content Include="Views\Book\Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

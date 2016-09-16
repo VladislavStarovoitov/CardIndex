@@ -18,6 +18,7 @@ namespace MVCPL.Infrastructure.Mappers
                 Description = book.Description,
                 Year = book.Year,
                 Image = book.Image,
+                ImageMimeType = book.ImageFile.ContentType,
                 Genres = new List<DtoGenre>(book.GenresSelected.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
                 Authors = new List<DtoAuthor>(book.GenresSelected.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
             };

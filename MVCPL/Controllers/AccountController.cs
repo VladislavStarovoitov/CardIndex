@@ -33,7 +33,7 @@ namespace MVCPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(loginModel.Email, loginModel.Password))//Проверяет учетные данные пользователя и управляет параметрами пользователей
+                if (Membership.ValidateUser(loginModel.Email, loginModel.Password))
                 {
                     FormsAuthentication.SetAuthCookie(loginModel.Email, loginModel.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))

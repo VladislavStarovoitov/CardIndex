@@ -19,6 +19,7 @@ namespace DAL.Mappers
                 Description = dalBook.Description,
                 Image = dalBook.Image,
                 Year = dalBook.Year,
+                ImageMimeType = dalBook.ImageMimeType,
                 Authors = dalBook.Authors.Select(a => new Author() { Name = a.Name, Id = a.Id }).ToList(),
                 Genres = dalBook.Genres.Select(a => new Genre() { Name = a.Name, Id = a.Id }).ToList() //List из-за Icollection
             };
@@ -34,6 +35,7 @@ namespace DAL.Mappers
                 Description = book.Description,
                 Image = book.Image,
                 Year = book.Year,
+                ImageMimeType = book.ImageMimeType,
                 Authors = book.Authors.Select(a => a.ToDtoAuthor()).ToList(),
                 Genres = book.Genres.Select(g => g.ToDtoGenre()).ToList()
             };

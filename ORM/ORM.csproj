@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201609132158056_AddUserRoleRelationship.Designer.cs">
       <DependentUpon>201609132158056_AddUserRoleRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609151716189_AddImageMimeType.cs" />
+    <Compile Include="Migrations\201609151716189_AddImageMimeType.Designer.cs">
+      <DependentUpon>201609151716189_AddImageMimeType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -119,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609132158056_AddUserRoleRelationship.resx">
       <DependentUpon>201609132158056_AddUserRoleRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609151716189_AddImageMimeType.resx">
+      <DependentUpon>201609151716189_AddImageMimeType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

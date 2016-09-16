@@ -11,13 +11,14 @@ namespace MVCPL.Models
 {
     //[ModelBinder(typeof(BookModelBinderEx))]
     [ModelBinder(typeof(BookModelBinder))]
-    [Bind(Exclude = "Image, Id")]
+   // [Bind(Exclude = "Image")]
     public class BookViewModel : IValidatableObject
     {
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Enter book name.")]
+        [Display(Name = "Enter book name")]
         public string Name { get; set; }
         
         public int Year { get; set; }

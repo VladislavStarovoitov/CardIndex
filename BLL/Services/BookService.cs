@@ -36,14 +36,14 @@ namespace BLL.Services
             return _unitOfWork.Books.Count();
         }
 
+        public DtoBook GetBookById(int id)
+        {
+            return _unitOfWork.Books.GetById(id);
+        }
+
         public IEnumerable<DtoBook> GetBookRange(int skipCount, int count)
         {
             return _unitOfWork.Books.GetRange(skipCount, count);
-        }
-
-        public void Dispose()
-        {
-            _unitOfWork.Dispose();
         }
     }
 }

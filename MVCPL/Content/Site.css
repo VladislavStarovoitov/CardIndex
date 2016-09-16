@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: url("../Images/bg-new.png")
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -38,7 +39,9 @@ textarea {
 }
 
 .info-container{
-    float: left;
+    background-color: white;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 .reset{
@@ -71,5 +74,38 @@ input[type="checkbox"].input-validation-error {
  
 .validation-summary-valid {
     display: none;
+}
+
+
+.comment-img{
+    width: 50px;
+    height: 50px;
+}
+
+
+.comment-author{
+    font-size: 15px;
+    font-weight: bold;
+    float: left;
+}
+
+.comment-time{
+    color: #aaa;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.comment-change{
+    float: right;
+    color: #aaa;
+}
+
+
+.comment-message-box{
+    max-width:100% !important;
+}
+
+.btn-group-center{
+    text-align: center;
 }
    

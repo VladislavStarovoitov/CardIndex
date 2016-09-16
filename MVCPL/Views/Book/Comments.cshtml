@@ -1,0 +1,30 @@
+﻿@using MVCPL.Infrastructure.Helpers
+@using MVCPL.Models
+
+@model IEnumerable<MVCPL.Models.CommentViewModel>
+
+@helper ShowComment(CommentViewModel comment) { 
+    <div class="comment row">
+        <a href="javascript:void(0);" class="comment-img-a col-md-1 col-sm-1 col-xs-2">
+            <img src="~/Images/bro.png" alt="Avatar" class="comment-img" />
+        </a>
+        <div class="comment-contentcomment-content col-md-11 col-sm-11 col-xs-10">
+            <div class="comment-author">@comment.AuthorName</div>
+            <a href="javascript:void(0);" class="comment-change">Изменить</a>
+            <div class="clear"></div>
+            <div class="comment-text">
+                @comment.Text
+            </div>
+            <div class="clear"></div>
+            <div class="comment-time">
+                @comment.CreationDate.Date.ToString("dd.MM.yyyy")
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+    @foreach (var item in Model)
+    {
+        @ShowComment(item)
+    }
+
