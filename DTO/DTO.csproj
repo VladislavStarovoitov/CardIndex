@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DtoAuthor.cs" />
     <Compile Include="DtoBook.cs" />
+    <Compile Include="DtoComment.cs" />
     <Compile Include="DtoGenre.cs" />
     <Compile Include="DtoRole.cs" />
     <Compile Include="DtoUser.cs" />

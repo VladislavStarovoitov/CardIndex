@@ -18,6 +18,8 @@ namespace ORM
         public string Password { get; set; }
 
         public DateTime CreationDate { get; set; }
+
+        public byte[] Avatar { get; set; }
         
         public virtual ICollection<Role> Roles { get; set; }
 

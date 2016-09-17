@@ -11,6 +11,7 @@ namespace MVCPL.Models
         public int Id { get; set; }
         public int AuthorId { get; set; }
         public string AuthorName { get; set; }
+        public int BookId { get; set; }
         public string Text { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]

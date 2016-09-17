@@ -30,15 +30,15 @@ namespace MVCPL.Infrastructure.Mappers
             {
                 Id = dtoBook.Id,
                 Name = dtoBook.Name,
-                Authors = dtoBook.Authors.Select(a => a.ToMvcModelAuthor()).ToList(),
-                Genres = dtoBook.Genres.Select(a => a.ToMvcModelGenre()).ToList(),
+                Authors = dtoBook.Authors.Select(a => a.ToAuthorViewModel()).ToList(),
+                Genres = dtoBook.Genres.Select(a => a.ToGenreViewModel()).ToList(),
                 Description = dtoBook.Description,
                 Year = dtoBook.Year,
                 Image = dtoBook.Image
             };
         }
 
-        public static Author ToMvcModelAuthor(this DtoAuthor dtoAuthor)
+        public static Author ToAuthorViewModel(this DtoAuthor dtoAuthor)
         {
             return new Author
             {
@@ -47,7 +47,7 @@ namespace MVCPL.Infrastructure.Mappers
             };
         }
 
-        public static Genre ToMvcModelGenre(this DtoGenre dtoGenre)
+        public static Genre ToGenreViewModel(this DtoGenre dtoGenre)
         {
             return new Genre
             {
@@ -56,12 +56,17 @@ namespace MVCPL.Infrastructure.Mappers
             };
         }
 
-        public static Genre ToMvcModelAuthor(this DtoGenre dtoGenrer)
+        public static CommentViewModel ToCommentViewModel(this DtoComment dtoComment)
         {
-            return new Genre
+            return new CommentViewModel
             {
-                Id = dtoGenrer.Id,
-                Name = dtoGenrer.Name
+                Id = dtoComment.Id,
+                AuthorId = dtoComment.UserId,
+                AuthorName = dtoComment.UserEmail,
+                BookId = dtoComment.BookId,
+                Text = dtoComment.Text,
+                Avatar = dtoComment.Avatar,
+                CreationDate = dtoComment.CreationDate
             };
         }
     }

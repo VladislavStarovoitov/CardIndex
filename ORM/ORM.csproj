@@ -69,6 +69,7 @@
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="CardIndex.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Migrations\201608311837383_InitialCreate.cs" />
@@ -90,6 +91,14 @@
     <Compile Include="Migrations\201609151716189_AddImageMimeType.cs" />
     <Compile Include="Migrations\201609151716189_AddImageMimeType.Designer.cs">
       <DependentUpon>201609151716189_AddImageMimeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609171246303_AddComments.cs" />
+    <Compile Include="Migrations\201609171246303_AddComments.Designer.cs">
+      <DependentUpon>201609171246303_AddComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609171304425_AddAvatarToUser.cs" />
+    <Compile Include="Migrations\201609171304425_AddAvatarToUser.Designer.cs">
+      <DependentUpon>201609171304425_AddAvatarToUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609151716189_AddImageMimeType.resx">
       <DependentUpon>201609151716189_AddImageMimeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609171246303_AddComments.resx">
+      <DependentUpon>201609171246303_AddComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609171304425_AddAvatarToUser.resx">
+      <DependentUpon>201609171304425_AddAvatarToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

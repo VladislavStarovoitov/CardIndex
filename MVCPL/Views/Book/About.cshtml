@@ -55,7 +55,7 @@
     </div>
 
     <hr />
-    @using (Ajax.BeginForm("Comments", "Book", new AjaxOptions { UpdateTargetId = "new-comment"}))
+    @using (Ajax.BeginForm("Comments", "Book", new AjaxOptions { UpdateTargetId = "new-comment", InsertionMode = InsertionMode.InsertAfter}))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)

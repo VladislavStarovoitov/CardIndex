@@ -100,5 +100,20 @@ namespace DAL.Mappers
                 Name = dtoRole.Name
             };
         }
+
+        public static DtoComment ToDtoComment(dynamic comment)
+        {
+            DtoComment dtoComment = new DtoComment
+            {
+                Id = comment.Id,
+                BookId = comment.BookId,
+                UserId = comment.UserId,
+                Text = comment.Text,
+                CreationDate = comment.CreationDate,
+                UserEmail = comment.UserEmail,
+                Avatar = comment.Avatar
+            };
+            return dtoComment;
+        }
     }
 }

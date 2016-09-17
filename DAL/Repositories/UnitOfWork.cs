@@ -14,6 +14,7 @@ namespace DAL.Repositories
         private IBookRepository _bookRespository;
         private IUserRepository _userRespository;
         private IRoleRepository _roleRespository;
+        private ICommentRepository _commentRespository;
 
         public UnitOfWork(DbContext dataBase)
         {
@@ -47,6 +48,16 @@ namespace DAL.Repositories
                 if (ReferenceEquals(_roleRespository, null))
                     _roleRespository = new RoleRepository(_dataBase);
                 return _roleRespository;
+            }
+        }
+
+        public ICommentRepository Comments
+        {
+            get
+            {
+                if (ReferenceEquals(_commentRespository, null))
+                    _commentRespository = new CommentRepository(_dataBase);
+                return _commentRespository;
             }
         }
 

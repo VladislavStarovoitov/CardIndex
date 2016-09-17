@@ -15,19 +15,27 @@ namespace MVCPL.Controllers
     public class BookController : Controller
     {
         private readonly IBookService _bookService;
+        private readonly ICommentService _commentService;
 
-        public BookController(IBookService bookService)
+        public BookController(IBookService bookService, ICommentService commentService)
         {
             _bookService = bookService;
+            _commentService = commentService;
         }
 
-        public ActionResult About(int id = 17, int page = 1)
+        public ActionResult About(int id)
         {
             id = 17;
             BookViewModel book = _bookService.GetBookById(id)?.ToBookViewModel();
-            var com = Comment();
-            com.Book = book;
-            return View(com);
+            IEnumerable<CommentViewModel> bookComments = _commentService.GetCommentsByBookId(id)?.Select(c => c.ToCommentViewModel());
+            if (ReferenceEquals(book, null))
+                return HttpNotFound();
+
+            if (ReferenceEquals(bookComments, null))
+                bookComments = new CommentViewModel[0];
+
+            var bookInfo = new BookInfoViewModel { Book = book, Comments = bookComments };
+            return View(bookInfo);
         }
 
         public ActionResult Add()
@@ -95,6 +103,7 @@ namespace MVCPL.Controllers
             return com;
          }
 
+        [ChildActionOnly]
         public ActionResult Comments(CommentViewModel com)
         {
             com.AuthorName = "Лалка";
