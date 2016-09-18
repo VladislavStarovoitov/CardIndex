@@ -86,29 +86,5 @@ namespace MVCPL.Controllers
         {
             throw new NotImplementedException();
         }
-
-        
-        private BookInfoViewModel Comment(int id = 17, int page = 1)
-        {
-            BookInfoViewModel com = new BookInfoViewModel();
-            CommentViewModel c = new CommentViewModel { AuthorName = "Великий", CreationDate = DateTime.Now };
-            c.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ";
-            c.Text += "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
-            c.Text += "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ";
-            c.Text += "ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit";
-            c.Text += " esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident,";
-            c.Text += " sunt in culpa qui officia deserunt mollit anim id est laborum.";
-            com.PageInfo = new PageInfo { RowsPerPage = 3, TotalItems = 20, PageNumber = 1 };
-            com.Comments = new List<CommentViewModel> { c, c, c, c, c, c, c };
-            return com;
-         }
-
-        [ChildActionOnly]
-        public ActionResult Comments(CommentViewModel com)
-        {
-            com.AuthorName = "Лалка";
-            com.CreationDate = DateTime.Now;
-            return PartialView(new List<CommentViewModel> { com });
-        }
     }
 }

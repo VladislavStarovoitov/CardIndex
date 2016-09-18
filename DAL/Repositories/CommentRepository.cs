@@ -22,7 +22,8 @@ namespace DAL.Repositories
 
         public bool Create(DtoComment entity)
         {
-            throw new NotImplementedException();
+            _dataBase.Set<Comment>().Add(entity.ToOrmComment());
+            return true;
         }
 
         public IEnumerable<DtoComment> GetAll()
@@ -46,7 +47,7 @@ namespace DAL.Repositories
                         UserId = c.UserId,
                         UserEmail = u.Email,
                         Avatar = u.Avatar
-                    })?.Select(c => DTOMappers.ToDtoComment(c));
+                    }).AsEnumerable()?.Select(c => DTOMappers.ToDtoComment(c));
             return comments;
         }
 

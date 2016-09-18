@@ -69,5 +69,18 @@ namespace MVCPL.Infrastructure.Mappers
                 CreationDate = dtoComment.CreationDate
             };
         }
+
+        public static DtoComment ToDtoComment(this CommentViewModel comment)
+        {
+            return new DtoComment
+            {
+                Id = comment.Id,
+                BookId = comment.BookId,
+                UserEmail = comment.AuthorName,
+                Text = comment.Text,
+                UserId = comment.AuthorId,
+                CreationDate = comment.CreationDate
+            };
+        }
     }
 }

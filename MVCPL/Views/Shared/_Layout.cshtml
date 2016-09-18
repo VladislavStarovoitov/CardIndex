@@ -23,16 +23,17 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                @Html.Partial("_SignIn")
             </div>
 
         </div>
     </div>
     <div class="container body-content">
         <div class="row">
-            <div class="col-md-9 info-container">
+            <div class="col-md-9 info-container"> @*info-container*@
                 @RenderSection("Body")
             </div>
-            <div class="col-md-3 box" style="height: 50px;"></div>
+            <div class="col-md-3 box" style="height: 50px; margin-left : 2%; width: 23%"></div>
         </div>
         @*<div class="clear"></div>*@
         <hr />

@@ -18,6 +18,16 @@ namespace BLL.Services
             _unitOfWork = unitOfWork;
         }
 
+        public bool CreateComment(DtoComment dtoComment)
+        {
+            var result = _unitOfWork.Comments.Create(dtoComment);
+            if (result)
+            {
+                _unitOfWork.Commit();
+            }
+            return result;
+        }
+
         public IEnumerable<DtoComment> GetCommentsByBookId(int bookId)
         {
             return _unitOfWork.Comments.GetByBookId(bookId);

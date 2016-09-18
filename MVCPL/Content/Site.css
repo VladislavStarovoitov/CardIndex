@@ -32,15 +32,26 @@ textarea {
 }
 
 .box-image{
-    height: 350px;
+    width: 100%;
+}
+
+.info-image{
+    height: 400px;
     float: left;
-    margin-right: 5px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.cover-container{
+    background-color: #222222;
+    margin-top: 20px;
+    height: 110%;
 }
 
 .info-container{
     background-color: white;
-    margin-top: 10px;
+    margin-top: 20px;
     padding-bottom: 10px;
 }
 
@@ -76,12 +87,10 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-
 .comment-img{
     width: 50px;
     height: 50px;
 }
-
 
 .comment-author{
     font-size: 15px;
@@ -100,12 +109,21 @@ input[type="checkbox"].input-validation-error {
     color: #aaa;
 }
 
-
 .comment-message-box{
     max-width:100% !important;
 }
 
 .btn-group-center{
+    text-align: center;
+}
+
+.book-name{
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+.info-book-name{
     text-align: center;
 }
    

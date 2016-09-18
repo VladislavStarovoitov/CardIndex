@@ -7,51 +7,34 @@
 }
 @helper ShowBook(BookViewModel book)
 {
-    <div class="col-lg-12 box">
-        <div>
-            <h1>@book.Name</h1>
-            <img src="data:image/gif;base64,@Convert.ToBase64String(book.Image)" class="img-rounded box-image" alt="Cover" />
-            <ul class="reset">
-                <li>
-                    <b>Year: </b>
-                    <a href="javascript:void(0);">2016</a>
-                </li>
-                <li>
-                    <b>Genre: </b>
-                    <a href="javascript:void(0);">Fantasy</a>
-                </li>
-                <li>
-                    <b>Authors: </b>
-                    <a href="javascript:void(0);">Ivanov</a>
-                </li>
-                <li>
-                    <b>Description: </b>
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    </span>
-                </li>
-            </ul>
+    <div class="col-md-4">
+        <div class="cover-container">
+            <a href=@Url.Action("About", "Book", new { id = book.Id })>
+                <img src="data:image/gif;base64,@Convert.ToBase64String(book.Image)" class="box-image" alt="Cover" />
+            </a>
+            <p class="book-name">
+                @*@book.Name*@Барни Стинсон
+            </p>
         </div>
-        <div class="clear"></div>
-        <p><a class="btn btn-default" href="javascript:void(0);">More &raquo;</a></p>
     </div>
 }
 
 @section Body{
     
-    @foreach (var item in Model.Books)
+<div class="row">
+    @for (int i = 0; i < 4  ; i++)
     {
-        @ShowBook(item);
+
+        @ShowBook(Model.Books.First())
+
     }
+</div>
 
     <div class="clear"></div>
     <br />
-    <div class="btn-group">
-        @Html.PageLinks(Model.PageInfo, number => Url.Action("Index", new { page = number }))
+    <div class="btn-group-center">
+        <div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, number => Url.Action("Index", new { page = number }))
+        </div>
     </div>
 }

@@ -10,5 +10,6 @@ namespace BLL.Interface.Services
     public interface ICommentService
     {
         IEnumerable<DtoComment> GetCommentsByBookId(int bookId);
+        bool CreateComment(DtoComment dtoComment);
     }
 }

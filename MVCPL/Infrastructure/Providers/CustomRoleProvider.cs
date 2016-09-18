@@ -10,8 +10,8 @@ namespace MVCPL.Infrastructure.Providers
 {
     public class CustomRoleProvider : RoleProvider
     {
-        private IUserService _userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
-        private IRoleService _roleService = (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
+        private IUserService _userService => (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
+        private IRoleService _roleService => (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
 
 
         public override bool IsUserInRole(string email, string roleName)

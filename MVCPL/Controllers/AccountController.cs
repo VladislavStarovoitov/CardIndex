@@ -21,7 +21,7 @@ namespace MVCPL.Controllers
 
 
         [HttpGet]
-        public ActionResult Login(string returnUrl)
+        public ActionResult SignIn(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -29,13 +29,13 @@ namespace MVCPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel loginModel ,string returnUrl)
+        public ActionResult SignIn(SignInViewModel signInModel ,string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(loginModel.Email, loginModel.Password))
+                if (Membership.ValidateUser(signInModel.Email, signInModel.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(loginModel.Email, loginModel.RememberMe);
+                    FormsAuthentication.SetAuthCookie(signInModel.Email, signInModel.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
@@ -47,38 +47,38 @@ namespace MVCPL.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Incorrect login or password.");
+                    ModelState.AddModelError("", "Incorrect email or password.");
                 }
             }
-            return View(loginModel);
+            return View(signInModel);
         }
 
-        public ActionResult Register()
+        public ActionResult SignUp()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel registerModel)
+        public ActionResult SignUp(SignUpViewModel signUpModel)
         {
-            var anyUser = _userService.GetUserByEmail(registerModel.Email);
+            var anyUser = _userService.GetUserByEmail(signUpModel.Email);
             
             if (!ReferenceEquals(anyUser, null))
             {
                 ModelState.AddModelError("", "That username is taken. Try another.");
-                return View(registerModel);
+                return View(signUpModel);
             }
 
 
             if (ModelState.IsValid)
             {
                 var membershipUser = ((CustomMembershipProvider)Membership.Provider)
-                    .CreateUser(registerModel.Email, registerModel.Password);
+                    .CreateUser(signUpModel.Email, signUpModel.Password);
 
                 if (membershipUser != null)
                 {
-                    FormsAuthentication.SetAuthCookie(registerModel.Email, false);
+                    FormsAuthentication.SetAuthCookie(signUpModel.Email, false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -86,7 +86,14 @@ namespace MVCPL.Controllers
                     ModelState.AddModelError("", "Error registration.");
                 }
             }
-            return View(registerModel);
+            return View(signUpModel);
+        }
+
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("SignIn", "Account");
         }
     }
 }

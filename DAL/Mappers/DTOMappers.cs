@@ -115,5 +115,17 @@ namespace DAL.Mappers
             };
             return dtoComment;
         }
+
+        public static Comment ToOrmComment(this DtoComment dtoComment)
+        {
+            return new Comment
+            {
+                Id = dtoComment.Id,
+                BookId = dtoComment.BookId,
+                UserId = dtoComment.UserId,
+                Text = dtoComment.Text,
+                CreationDate = dtoComment.CreationDate
+            };
+        }
     }
 }
