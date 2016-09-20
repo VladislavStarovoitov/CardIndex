@@ -9,6 +9,7 @@ using BLL.Interface;
 using MVCPL.Infrastructure.Mappers;
 using MVCPL.Infrastructure;
 using BLL;
+using System.Web.Configuration;
 
 namespace MVCPL.Controllers
 {
@@ -41,6 +42,7 @@ namespace MVCPL.Controllers
             return View(bookInfo);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
             var book = new BookViewModel();
@@ -51,7 +53,7 @@ namespace MVCPL.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [HandleError(ExceptionType = typeof(InvalidOperationException))]
+        [Authorize(Roles = "Admin")]
         public ActionResult Add(BookViewModel book)
         {
             bool isAdded = false;
@@ -77,7 +79,17 @@ namespace MVCPL.Controllers
         {
             ViewBag.IsSearch = true;
             ViewBag.BookName = bookName;
-            return View();
+            int rows = int.Parse(WebConfigurationManager.AppSettings["bookRows"]);
+            int booksPerRow = int.Parse(WebConfigurationManager.AppSettings["booksPerRow"]);
+            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _bookService.BookCount(), RowsPerPage = rows, ItemsPerRow = booksPerRow };
+            IEnumerable<BookViewModel> books = _bookService.GetBooksByName((page - 1) * info.RowsPerPage, info.RowsPerPage, bookName)
+                                               .Select(b => b.ToBookViewModel());
+            BookPaginationViewModel bpvm = new BookPaginationViewModel() { Books = books, PageInfo = info };
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Books", bpvm);
+            }
+            return View(bpvm);
         }
 
         public FileContentResult Download(int id)

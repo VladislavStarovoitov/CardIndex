@@ -17,28 +17,29 @@
     <ul class="reset">
         <li>
             <b>Year: </b>
-            <a href="javascript:void(0);">@Model.Book.Year</a>
+            @Model.Book.Year
         </li>
         <li>
             <b>Genre: </b>
-            <a href="javascript:void(0);">
-                @{ 
+                @{
+                    string genres = "";
                     foreach (var item in Model.Book.Genres)
                     {
-                        <span>@item.Name </span>
+                        genres += item.Name + ", ";
                     }
+                    <span>@genres.Remove(genres.Length - 2, 2)</span>
                 }
-            </a>
         </li>
         <li>
             <b>Authors: </b>
-            <a href="javascript:void(0);">
-                @*@foreach (var item in Model.Book.Authors)
-                {
-                    string result = item.Name + " ";
-                    @result
-                }*@
-            </a>
+                @{ 
+                    string authors = "";
+                    foreach (var item in Model.Book.Authors)
+                    {
+                        authors += item.Name + ", ";
+                    }
+                    <span>@authors.Remove(authors.Length - 2, 2)</span>
+                }
         </li>
         <li>
             <b>Description: </b>
@@ -61,7 +62,7 @@
     @if (Request.IsAuthenticated)
     {
         <hr />
-        using (Ajax.BeginForm("Create", "Comment", new AjaxOptions {OnSuccess = "OnSuccess", UpdateTargetId = "comments", InsertionMode = InsertionMode.InsertAfter }))
+        using (Ajax.BeginForm("Create", "Comment", new AjaxOptions {OnSuccess = "OnSuccess", UpdateTargetId = "comments" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)

@@ -1,10 +1,19 @@
 ﻿@model MVCPL.Models.BookPaginationViewModel
-
 @{
     ViewBag.Title = "Search";
 }
+
 @section Body{
-    @Html.Partial("_Books", Model)
+    @{ 
+        if (Model.Books.Count() == 0)
+        {
+            <h2>Your search returned no results.</h2>
+        }
+        else
+        {
+            @Html.Partial("_Books", Model)
+        }
+    }
 }
 
 @section Scripts{

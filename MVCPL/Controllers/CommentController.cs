@@ -9,6 +9,7 @@ using MVCPL.Infrastructure.Mappers;
 
 namespace MVCPL.Controllers
 {
+    [Authorize]
     public class CommentController : Controller
     {
         private readonly IUserService _userService;
@@ -28,18 +29,30 @@ namespace MVCPL.Controllers
             {
                 var currentUser = _userService.GetUserByEmail(User.Identity.Name);
                 comment.AuthorId = currentUser.Id;
-                comment.AuthorName = currentUser.Email;
                 comment.CreationDate = DateTime.Now;
-                comment.Avatar = currentUser.Avatar;
                 _commentService.CreateComment(comment.ToDtoComment());
+                var comments = _commentService.GetCommentsByBookId(comment.BookId)?.Select(c => c.ToCommentViewModel());
                 if (Request.IsAjaxRequest())
                 {
-                    return PartialView("~/Views/Book/Comments.cshtml", new List<CommentViewModel> { comment });
+                    return PartialView("~/Views/Book/Comments.cshtml", comments);
                 }
                 return RedirectToAction("About", "Book", new { comment.BookId });
             }
 
             return RedirectToAction("About", "Book", new { comment.BookId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, int bookId)
+        {
+            _commentService.Delete(id);
+             var comments = _commentService.GetCommentsByBookId(bookId)?.Select(c => c.ToCommentViewModel());
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("~/Views/Book/Comments.cshtml", comments);
+            }
+            return RedirectToAction("About", "Book", new { bookId });
         }
     }
 }

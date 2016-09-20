@@ -11,5 +11,6 @@ namespace DAL.Interface.Repositories
     public interface ICommentRepository : IRepository<DtoComment>
     {
         IEnumerable<DtoComment> GetByBookId(int bookId);
+        void Delete(int id);
     }
 }

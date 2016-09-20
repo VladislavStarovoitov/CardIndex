@@ -11,5 +11,6 @@ namespace BLL.Interface.Services
     {
         IEnumerable<DtoComment> GetCommentsByBookId(int bookId);
         bool CreateComment(DtoComment dtoComment);
+        void Delete(int id);
     }
 }

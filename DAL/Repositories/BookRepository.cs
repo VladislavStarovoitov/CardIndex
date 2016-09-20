@@ -74,7 +74,7 @@ namespace DAL.Repositories
                 .Select(b => b.ToDtoBook());
         }
 
-        private bool Contains(Book ormBook) //проверить
+        private bool Contains(Book ormBook) 
         {
             var authors = ormBook.Authors.Select(a => a.Name);
             bool bookExists = _dataBase.Set<Author>()
@@ -115,6 +115,17 @@ namespace DAL.Repositories
                 Content = book.Content,
                 ContentMimeType = book.ContentMimeType
             };
+        }
+
+        public IEnumerable<DtoBook> GetByName(int skipCount, int count, string name)
+        {
+            return _dataBase.Set<Book>()
+                .Where(b => b.Name == name)
+                .OrderByDescending(b => b.Name)
+                .Skip(skipCount)
+                .Take(count)
+                .AsEnumerable()
+                .Select(b => b.ToDtoBook());
         }
     }
 }

@@ -26,6 +26,13 @@ namespace DAL.Repositories
             return true;
         }
 
+        public void Delete(int id)
+        {
+            var comment = new Comment { Id = id };
+            _dataBase.Set<Comment>().Attach(comment);
+            _dataBase.Set<Comment>().Remove(comment);
+        }
+
         public IEnumerable<DtoComment> GetAll()
         {
             throw new NotImplementedException();

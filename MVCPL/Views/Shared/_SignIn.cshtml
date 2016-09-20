@@ -6,7 +6,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink(User.Identity.Name, "Index", "Home")
+                <label class="user-name">@User.Identity.Name</label>
             </li>
             <li><a href="javascript:document.getElementById('signoutForm').submit()">Sign out</a></li>
         </ul>

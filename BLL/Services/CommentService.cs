@@ -28,6 +28,12 @@ namespace BLL.Services
             return result;
         }
 
+        public void Delete(int id)
+        {
+            _unitOfWork.Comments.Delete(id);
+            _unitOfWork.Commit();
+        }
+
         public IEnumerable<DtoComment> GetCommentsByBookId(int bookId)
         {
             return _unitOfWork.Comments.GetByBookId(bookId);

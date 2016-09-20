@@ -12,6 +12,7 @@ namespace BLL.Interface.Services
         bool AddBook(DtoBook dtoBook, IEnumerable<string> newAuthors, IEnumerable<string> newGenres);
         int BookCount();
         IEnumerable<DtoBook> GetBookRange(int skipCount, int count);
+        IEnumerable<DtoBook> GetBooksByName(int skipCount, int count, string name);
         DtoBook GetBookById(int id);
         DtoBookContent GetBookContent(int id);
     }

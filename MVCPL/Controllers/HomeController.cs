@@ -32,7 +32,7 @@ namespace MVCPL.Controllers
             BookPaginationViewModel bpvm = new BookPaginationViewModel() { Books = books, PageInfo = info };
             if (Request.IsAjaxRequest())
             {
-                return PartialView("Books", bpvm);
+                return PartialView("_Books", bpvm);
             }
             return View(bpvm);
         }

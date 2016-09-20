@@ -50,5 +50,10 @@ namespace BLL.Services
         {
             return _unitOfWork.Books.GetRange(skipCount, count);
         }
+
+        public IEnumerable<DtoBook> GetBooksByName(int skipCount, int count, string name)
+        {
+            return _unitOfWork.Books.GetByName(skipCount, count, name);
+        }
     }
 }
