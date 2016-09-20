@@ -186,6 +186,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,7 +202,7 @@
     <Compile Include="Infrastructure\Providers\CustomRoleProvider.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\BookPaginationViewModel.cs" />
-    <Compile Include="Models\CommentPaginationViewModel.cs" />
+    <Compile Include="Models\BookInfoViewModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\Interfaces\ITag.cs" />
     <Compile Include="Models\SignInViewModel.cs" />
@@ -222,8 +223,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\404.png" />
     <Content Include="Images\bg-new.png" />
     <Content Include="Images\bro.png" />
+    <Content Include="Images\nophoto.png" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -234,7 +237,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
-    <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\multi-selection.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -245,6 +248,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pagination.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -270,6 +274,10 @@
     <Content Include="Views\Shared\_SignIn.cshtml" />
     <Content Include="Views\Book\About.cshtml" />
     <Content Include="Views\Book\Comments.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Book\Search.cshtml" />
+    <Content Include="Views\Shared\_Books.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

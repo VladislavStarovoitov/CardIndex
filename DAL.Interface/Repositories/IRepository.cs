@@ -8,6 +8,7 @@ namespace DAL.Interface.Repositories
 {
     public interface IRepository<TEntity>
     {
+
         bool Create(TEntity entity);
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int id);

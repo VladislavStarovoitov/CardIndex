@@ -1,0 +1,43 @@
+﻿@using MVCPL.Infrastructure.Helpers
+@using MVCPL.Models
+
+@model MVCPL.Models.BookPaginationViewModel
+
+@helper ShowBook(BookViewModel book)
+{
+    <div class="col-md-4">
+        <div class="cover-container">
+            <a href=@Url.RouteUrl("books", new { id = book.Id })>
+                <img src="data:image/gif;base64,@Convert.ToBase64String(book.Cover)" class="box-image" alt="Cover" />
+            </a>
+            <p class="book-name">
+                @book.Name
+            </p>
+        </div>
+    </div>
+}
+
+<div id="books">    
+    <div class="row">
+        @foreach (var item in Model.Books)
+        {
+            @ShowBook(item)
+        }
+    </div>
+    <div class="clear"></div>
+    <br />
+    <div class="btn-group-center">
+        <div class="btn-group">
+            @{ 
+                if (ViewBag.IsSearch)
+                {
+                    @Ajax.AjaxPageLinks(new AjaxOptions { UpdateTargetId = "books", OnSuccess = "OnSuccess" }, Model.PageInfo, (string)ViewBag.BookName, (number, name) => Url.Action("Search", "Book", new { page = number, bookName = name}))
+                }
+                else
+                {
+                    @Ajax.AjaxPageLinks(new AjaxOptions { UpdateTargetId = "books", OnSuccess = "OnSuccess" }, Model.PageInfo, number => Url.Action("Index", "Home", new { page = number }))
+                }
+            }
+        </div>
+    </div>
+</div>

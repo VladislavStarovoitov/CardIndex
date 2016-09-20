@@ -11,6 +11,7 @@ namespace DAL.Interface.Repositories
     {
         bool Create(DtoBook entity, IEnumerable<string> newAuthors, IEnumerable<string> newGenres);
         IEnumerable<DtoBook> GetRange(int skipCount, int count);
+        DtoBookContent GetContent(int id);
         int Count();
     }
 }

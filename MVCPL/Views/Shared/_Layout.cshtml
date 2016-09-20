@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -19,9 +20,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.RouteLink("Home", "home")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Users edit", "UsersEdit", "Home")</li>
+                    }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Users edit", "UsersEdit", "Home")</li>
+                    }
                 </ul>
                 @Html.Partial("_SignIn")
             </div>
@@ -30,15 +39,24 @@
     </div>
     <div class="container body-content">
         <div class="row">
-            <div class="col-md-9 info-container"> @*info-container*@
+            <div class="col-md-9 info-container"> 
                 @RenderSection("Body")
             </div>
-            <div class="col-md-3 box" style="height: 50px; margin-left : 2%; width: 23%"></div>
+            @using (Html.BeginForm("Search", "Book", FormMethod.Get))
+            {
+                <div class="col-md-3" id="search-side-bar">
+                    <div class="input-group">
+                        <input type="text" name="bookName" class="form-control search-input" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Search</button>
+                        </span>
+                    </div>
+                </div>
+            }
         </div>
-        @*<div class="clear"></div>*@
-        <hr />
+        <hr style="border-color:#222222;"/>
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year</p>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

@@ -15,3 +15,5 @@ E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrati
 E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddImageMimeType.resources
 E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddComments.resources
 E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddAvatarToUser.resources
+E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddIndexToAuthorAndGenreName.resources
+E:\для учебы\курсы\проект\CardIndex\ORM\obj\Debug\ORM.Migrations.AddContentToBook.resources

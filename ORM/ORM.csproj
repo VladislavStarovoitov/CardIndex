@@ -100,6 +100,14 @@
     <Compile Include="Migrations\201609171304425_AddAvatarToUser.Designer.cs">
       <DependentUpon>201609171304425_AddAvatarToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609181103219_AddIndexToAuthorAndGenreName.cs" />
+    <Compile Include="Migrations\201609181103219_AddIndexToAuthorAndGenreName.Designer.cs">
+      <DependentUpon>201609181103219_AddIndexToAuthorAndGenreName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609191202386_AddContentToBook.cs" />
+    <Compile Include="Migrations\201609191202386_AddContentToBook.Designer.cs">
+      <DependentUpon>201609191202386_AddContentToBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -141,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609171304425_AddAvatarToUser.resx">
       <DependentUpon>201609171304425_AddAvatarToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609181103219_AddIndexToAuthorAndGenreName.resx">
+      <DependentUpon>201609181103219_AddIndexToAuthorAndGenreName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609191202386_AddContentToBook.resx">
+      <DependentUpon>201609191202386_AddContentToBook.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

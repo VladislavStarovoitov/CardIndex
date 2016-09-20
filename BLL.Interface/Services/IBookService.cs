@@ -13,5 +13,6 @@ namespace BLL.Interface.Services
         int BookCount();
         IEnumerable<DtoBook> GetBookRange(int skipCount, int count);
         DtoBook GetBookById(int id);
+        DtoBookContent GetBookContent(int id);
     }
 }

@@ -11,6 +11,8 @@ namespace DAL.Interface.Repositories
         IBookRepository Books { get; }
         IUserRepository Users { get; }
         IRoleRepository Roles { get; }
+        IAuthorRepository Authors { get; }
+        IGenreRepository Genres { get; }
         ICommentRepository Comments { get; }
         void Commit();
     }

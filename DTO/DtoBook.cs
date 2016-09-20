@@ -12,12 +12,12 @@ namespace DTO
         public string Name { get; set; }
         public List<DtoAuthor> Authors { get; set; }
         public List<DtoGenre> Genres { get; set; }
-        //IEnumerable<string> newAuthors
-        //IEnumerable<string> newGenres
         public int Year { get; set; }
         public string Description { get; set; }
-        public byte[] Image { get; set; }
-        public string ImageMimeType { get; set; }
+        public byte[] Cover { get; set; }
+        public string CoverMimeType { get; set; }
+        public byte[] Content { get; set; }
+        public string ContentMimeType { get; set; }
         public DateTime CreationDate { get; set; }
 
         public DtoBook()

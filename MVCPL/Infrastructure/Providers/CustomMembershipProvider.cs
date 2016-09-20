@@ -6,13 +6,17 @@ using System.Web.Security;
 using BLL.Interface.Services;
 using System.Web.Helpers;
 using DTO;
+using System.IO;
 
 namespace MVCPL.Infrastructure.Providers
 {
     public class CustomMembershipProvider : MembershipProvider
     {
-        private IUserService _userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
-        private IRoleService _roleService = (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
+        private IUserService UserService 
+            => (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
+
+        private IRoleService RoleService 
+            => (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
 
         public MembershipUser CreateUser(string email, string password)
         {
@@ -23,14 +27,20 @@ namespace MVCPL.Infrastructure.Providers
                 CreationDate = DateTime.Now
             };
 
-            var role = _roleService.GetRoleByName("User");
+            var role = RoleService.GetRoleByName("User");
             if (ReferenceEquals(role, null))
             {
                 return null;                
             }
             user.Roles = new List<DtoRole> { role };
-
-            bool creationResult = _userService.CreateUser(user);
+            var avatarPath = HttpContext.Current.Server.MapPath("~/Images/nophoto.png");
+            using (FileStream anonAvatar = new FileStream(avatarPath, FileMode.Open))
+            {
+                byte[] array = new byte[anonAvatar.Length];
+                anonAvatar.Read(array, 0, array.Length);
+                user.Avatar = array;
+            }
+            bool creationResult = UserService.CreateUser(user);
             if (creationResult)
             {
                 var membershipUser = GetUser(email, false);
@@ -42,7 +52,7 @@ namespace MVCPL.Infrastructure.Providers
 
         public override MembershipUser GetUser(string email, bool userIsOnline)
         {
-            var user = _userService.GetUserByEmail(email);
+            var user = UserService.GetUserByEmail(email);
 
             if (user == null) return null;
 
@@ -57,7 +67,7 @@ namespace MVCPL.Infrastructure.Providers
 
         public override bool ValidateUser(string email, string password)
         {
-            var user = _userService.GetUserByEmail(email);
+            var user = UserService.GetUserByEmail(email);
 
             if (!ReferenceEquals(user, null) && Crypto.VerifyHashedPassword(user.Password, password))
             {

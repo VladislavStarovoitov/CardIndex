@@ -37,7 +37,7 @@ namespace MVCPL.Infrastructure.ModelBinders
                 Description = description.Equals(string.Empty) ? null : description,
                 NewAuthors = newAuthors,
                 NewGenres = newGenres,
-                ImageFile = imageFile
+                CoverFile = imageFile
             };
             
             return book;

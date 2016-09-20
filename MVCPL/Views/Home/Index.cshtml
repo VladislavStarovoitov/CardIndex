@@ -1,40 +1,14 @@
-﻿@using MVCPL.Infrastructure.Helpers
-@using MVCPL.Models
-
-@model MVCPL.Models.BookPaginationViewModel
+﻿@model MVCPL.Models.BookPaginationViewModel
 @{
     ViewBag.Title = "Home Page";
 }
-@helper ShowBook(BookViewModel book)
-{
-    <div class="col-md-4">
-        <div class="cover-container">
-            <a href=@Url.Action("About", "Book", new { id = book.Id })>
-                <img src="data:image/gif;base64,@Convert.ToBase64String(book.Image)" class="box-image" alt="Cover" />
-            </a>
-            <p class="book-name">
-                @*@book.Name*@Барни Стинсон
-            </p>
-        </div>
-    </div>
+
+
+@section Body{  
+    @Html.Partial("_Books", Model)
 }
 
-@section Body{
-    
-<div class="row">
-    @for (int i = 0; i < 4  ; i++)
-    {
-
-        @ShowBook(Model.Books.First())
-
-    }
-</div>
-
-    <div class="clear"></div>
-    <br />
-    <div class="btn-group-center">
-        <div class="btn-group">
-            @Html.PageLinks(Model.PageInfo, number => Url.Action("Index", new { page = number }))
-        </div>
-    </div>
+@section Scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/pagination.js")"></script>
 }

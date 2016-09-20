@@ -1,18 +1,14 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "signoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            @if (User.IsInRole("Administrator"))
-            {
-                <li>@Html.ActionLink("Users edit", "UsersEdit", "Home")</li>
-            }
             <li>
-                @Html.ActionLink("Hello, " + User.Identity.Name + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink(User.Identity.Name, "Index", "Home")
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            <li><a href="javascript:document.getElementById('signoutForm').submit()">Sign out</a></li>
         </ul>
     }
 }
@@ -20,7 +16,6 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Sign in", "SignIn", "Account")</li>
-        <li>/</li>
         <li>@Html.ActionLink("Sign up", "SignUp", "Account")</li>
     </ul>
 }

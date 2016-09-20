@@ -17,10 +17,12 @@ namespace MVCPL.Infrastructure.Mappers
                 Name = book.Name,
                 Description = book.Description,
                 Year = book.Year,
-                Image = book.Image,
-                ImageMimeType = book.ImageFile.ContentType,
+                Cover = book.CoverFile.ToBytes(),
+                CoverMimeType = book.CoverFile.ContentType,
+                Content = book.ContentFile.ToBytes(),
+                ContentMimeType = book.ContentFile.ContentType,
                 Genres = new List<DtoGenre>(book.GenresSelected.Select(a => new DtoGenre() { Id = a, Name = String.Empty })),
-                Authors = new List<DtoAuthor>(book.GenresSelected.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
+                Authors = new List<DtoAuthor>(book.AuthorsSelected.Select(a => new DtoAuthor() { Id = a, Name = String.Empty })),
             };
         }
 
@@ -34,7 +36,7 @@ namespace MVCPL.Infrastructure.Mappers
                 Genres = dtoBook.Genres.Select(a => a.ToGenreViewModel()).ToList(),
                 Description = dtoBook.Description,
                 Year = dtoBook.Year,
-                Image = dtoBook.Image
+                Cover = dtoBook.Cover
             };
         }
 
@@ -81,6 +83,13 @@ namespace MVCPL.Infrastructure.Mappers
                 UserId = comment.AuthorId,
                 CreationDate = comment.CreationDate
             };
+        }
+
+        public static byte[] ToBytes(this HttpPostedFileBase httpFile)
+        {
+            byte[] file = new byte[httpFile.ContentLength];
+            httpFile.InputStream.Read(file, 0, httpFile.ContentLength);
+            return file;
         }
     }
 }

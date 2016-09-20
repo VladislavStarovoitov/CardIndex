@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-3">New authors</label>
+                <label class="control-label col-md-3">Don't find the right author?</label>
                 <div class="col-md-9">
                     <input name="NewAuthors" class="form-control" placeholder="Enter new authors (if necessary) separated by commas" />
                 </div>
@@ -51,7 +51,7 @@
             </div>
             
             <div class="form-group">
-                <label class="control-label col-md-3">New Genres</label>
+                <label class="control-label col-md-3">Don't find the right genre?</label>
                 <div class="col-md-9">
                     <input name="NewGenres" class="form-control" placeholder="Enter new genres (if necessary) separated by commas" />
                 </div>
@@ -68,14 +68,14 @@
             <div class="form-group">
                 <label class="control-label col-md-3">Load cover</label>
                 <div class="col-md-3">
-                    <label class="btn btn-default">Browse<input type="file" name="ImageFile" style="display: none;"></label>
+                    <label class="btn btn-default">Browse<input type="file" name="CoverFile" style="display: none;"></label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-3">Load book</label>
                 <div class="col-md-3">
-                    <label class="btn btn-default">Browse<input type="file" name="BookFile" style="display: none;"></label>
+                    <label class="btn btn-default">Browse<input type="file" name="ContentFile" style="display: none;"></label>
                 </div>
             </div>
             
@@ -90,5 +90,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript" src="@Url.Content("~/Scripts/site.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/multi-selection.js")"></script>
 }

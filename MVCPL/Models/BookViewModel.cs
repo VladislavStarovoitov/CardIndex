@@ -9,9 +9,8 @@ using MVCPL.Models.Interfaces;
 
 namespace MVCPL.Models
 {
-    //[ModelBinder(typeof(BookModelBinderEx))]
-    [ModelBinder(typeof(BookModelBinder))]
-   // [Bind(Exclude = "Image")]
+    [ModelBinder(typeof(BookModelBinderEx))]
+    [Bind(Exclude = "Cover, Content")]
     public class BookViewModel : IValidatableObject
     {
         [HiddenInput(DisplayValue = false)]
@@ -24,23 +23,25 @@ namespace MVCPL.Models
         public int Year { get; set; }
 
         [Required]
-
         public string Description { get; set; }
 
         public List<Author> Authors { get; set; }
         public IEnumerable<string> NewAuthors { get; set; }
+        [Display(Name = "Choose author")]
         public IEnumerable<int> AuthorsSelected { get; set; }
 
         public List<Genre> Genres { get; set; }
         public IEnumerable<string> NewGenres { get; set; }
+        [Display(Name = "Choose genre")]
         public IEnumerable<int> GenresSelected { get; set; }
 
-        //Наверно стоит отделить 
-        //public string NewAuthors { get; set; }
-        //public string NewGenres { get; set; }
-        //
-        public HttpPostedFileBase ImageFile { get; set; }
-        public byte[] Image { get; set; }
+        [Required]
+        public HttpPostedFileBase CoverFile { get; set; }
+        public byte[] Cover { get; set; }
+
+        [Required]
+        public HttpPostedFileBase ContentFile { get; set; }
+        public byte[] Content { get; set; }
 
         public BookViewModel()
         {

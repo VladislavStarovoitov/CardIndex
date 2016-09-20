@@ -15,5 +15,10 @@ namespace DTO
         public int UserId { get; set; }
         public string UserEmail { get; set; }
         public byte[] Avatar { get; set; }
+
+        public DtoComment()
+        {
+            Avatar = new byte[0];
+        }
     }
 }

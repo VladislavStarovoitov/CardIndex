@@ -13,7 +13,7 @@ namespace MVCPL.Models
         public int TotalItems { get; set; }
         public int TotalPages
         {
-            get { return (int)Math.Ceiling((decimal)TotalItems / RowsPerPage); }
+            get { return (int)Math.Ceiling((decimal)TotalItems / RowsPerPage / ItemsPerRow); }
         }
     }
 }

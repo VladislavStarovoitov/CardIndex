@@ -41,6 +41,11 @@ namespace BLL.Services
             return _unitOfWork.Books.GetById(id);
         }
 
+        public DtoBookContent GetBookContent(int id)
+        {
+            return _unitOfWork.Books.GetContent(id);
+        }
+
         public IEnumerable<DtoBook> GetBookRange(int skipCount, int count)
         {
             return _unitOfWork.Books.GetRange(skipCount, count);

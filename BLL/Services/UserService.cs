@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using BLL.Interface.Services;
 using DAL.Interface.Repositories;
 using DTO;
+using System.IO;
 
 namespace BLL.Services
 {
     public class UserService : IUserService
     {
-        IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public UserService(IUnitOfWork unitOfWork)
         {

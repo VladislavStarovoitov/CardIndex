@@ -21,12 +21,6 @@ namespace MVCPL.Infrastructure.ModelBinders
             book.NewAuthors = BindProperty<string>("NewAuthors").ToTagArray();
             book.NewGenres = BindProperty<string>("NewGenres").ToTagArray();
 
-            int id;
-            book.Authors = BindProperty<string[]>("Authors")?
-                            .Select(a => new Author { Name = string.Empty, Id = int.TryParse(a, out id) ? id : default(int) }).ToList();
-            book.Genres = BindProperty<string[]>("Genres")?
-                            .Select(g => new Genre { Name = string.Empty, Id = int.TryParse(g, out id) ? id : default(int) }).ToList();
-
             return model;
         }
 

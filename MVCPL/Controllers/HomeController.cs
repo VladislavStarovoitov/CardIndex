@@ -16,8 +16,6 @@ namespace MVCPL.Controllers
     {
         private readonly IBookService _bookService;
 
-        BookViewModel[] _books = new BookViewModel[2];
-
         public HomeController(IBookService bookService)
         {
             _bookService = bookService;
@@ -25,12 +23,18 @@ namespace MVCPL.Controllers
 
         public ActionResult Index(int page = 1)
         {
+            ViewBag.IsSearch = false;
             int rows = int.Parse(WebConfigurationManager.AppSettings["bookRows"]);
-            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _bookService.BookCount(), RowsPerPage = rows };
+            int booksPerRow = int.Parse(WebConfigurationManager.AppSettings["booksPerRow"]);
+            PageInfo info = new PageInfo() { PageNumber = page, TotalItems = _bookService.BookCount(), RowsPerPage = rows, ItemsPerRow = booksPerRow };
             IEnumerable<BookViewModel> books = _bookService.GetBookRange((page - 1) * info.RowsPerPage, info.RowsPerPage)
                                                .Select(b => b.ToBookViewModel());
-            BookPaginationViewModel ivm = new BookPaginationViewModel() { Books = books, PageInfo = info };
-            return View(ivm);
+            BookPaginationViewModel bpvm = new BookPaginationViewModel() { Books = books, PageInfo = info };
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("Books", bpvm);
+            }
+            return View(bpvm);
         }
 
         public ActionResult About()

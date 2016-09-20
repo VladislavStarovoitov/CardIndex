@@ -126,4 +126,37 @@ input[type="checkbox"].input-validation-error {
 .info-book-name{
     text-align: center;
 }
+
+#search-side-bar{
+    height: 75px;
+    margin-left: 2%; 
+    width: 23%; 
+    background-color: #222222; 
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.search-input{
+    background-color: #999999;
+    color: white;
+}
+
+.search-input::-webkit-input-placeholder {
+    color:#d8d8d8;
+}
+.search-input::-moz-placeholder{
+    color:#d8d8d8;
+}
+.search-input:-moz-placeholder{
+    color:#d8d8d8;
+}
+.search-input:-ms-input-placeholder{
+    color:#d8d8d8;
+}
+
+.search-input:focus {
+  border-color: white;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px white;
+}
+
    

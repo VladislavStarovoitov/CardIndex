@@ -58,7 +58,10 @@ namespace DAL.Repositories
 
         public DtoBook GetById(int id)
         {
-            return _dataBase.Set<Book>().Find(id)?.ToDtoBook();
+            return _dataBase.Set<Book>()
+                .Include(b => b.Authors)
+                .Include(b => b.Genres)
+                .SingleOrDefault(b => b.Id == id)?.ToDtoBook();
         }
 
         public IEnumerable<DtoBook> GetRange(int skipCount, int count)
@@ -98,6 +101,20 @@ namespace DAL.Repositories
                 entry.State = EntityState.Modified;
                 entry.Property(e => e.Name).IsModified = false;
             }
+        }
+
+        public DtoBookContent GetContent(int id)
+        {
+            var book = _dataBase.Set<Book>().Find(id);
+
+            if (ReferenceEquals(book, null))
+                return new DtoBookContent();
+
+            return new DtoBookContent
+            {
+                Content = book.Content,
+                ContentMimeType = book.ContentMimeType
+            };
         }
     }
 }

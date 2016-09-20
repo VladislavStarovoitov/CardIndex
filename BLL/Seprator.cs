@@ -19,7 +19,6 @@ namespace BLL
             {
                 stringArray[i] = stringArray[i].Trim();
             }
-            //лучше добавить регулярные выражения для проверки
             var result = stringArray.Where(sA => !sA.Equals(string.Empty));
             return result;
         }

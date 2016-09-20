@@ -1,0 +1,13 @@
+﻿@model MVCPL.Models.BookPaginationViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+@section Body{
+    @Html.Partial("_Books", Model)
+}
+
+@section Scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/pagination.js")"></script>
+}

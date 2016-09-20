@@ -7,6 +7,7 @@ using MVCPL.Models;
 using BLL.Interface.Services;
 using MVCPL.Infrastructure.Providers;
 using System.Web.Security;
+using System.IO;
 
 namespace MVCPL.Controllers
 {
@@ -23,6 +24,10 @@ namespace MVCPL.Controllers
         [HttpGet]
         public ActionResult SignIn(string returnUrl)
         {
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Home", "Index");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -42,7 +47,7 @@ namespace MVCPL.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToRoute("home");
                     }
                 }
                 else
@@ -55,6 +60,10 @@ namespace MVCPL.Controllers
 
         public ActionResult SignUp()
         {
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToRoute("home");
+            }
             return View();
         }
 

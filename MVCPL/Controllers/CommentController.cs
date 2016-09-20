@@ -30,12 +30,13 @@ namespace MVCPL.Controllers
                 comment.AuthorId = currentUser.Id;
                 comment.AuthorName = currentUser.Email;
                 comment.CreationDate = DateTime.Now;
+                comment.Avatar = currentUser.Avatar;
                 _commentService.CreateComment(comment.ToDtoComment());
                 if (Request.IsAjaxRequest())
                 {
                     return PartialView("~/Views/Book/Comments.cshtml", new List<CommentViewModel> { comment });
                 }
-                //return RedirectToAction("About", "Book", new { comment.BookId });
+                return RedirectToAction("About", "Book", new { comment.BookId });
             }
 
             return RedirectToAction("About", "Book", new { comment.BookId });

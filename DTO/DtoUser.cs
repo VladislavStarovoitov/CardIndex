@@ -12,10 +12,18 @@ namespace DTO
 
         public string Email { get; set; }
 
+        public byte[] Avatar { get; set; }
+
         public string Password { get; set; }
 
         public DateTime CreationDate { get; set; }
 
         public List<DtoRole> Roles { get; set; }
+
+        public DtoUser()
+        {
+            Avatar = new byte[0];
+            Roles = new List<DtoRole>();
+        }
     }
 }

@@ -10,18 +10,21 @@ namespace MVCPL.Infrastructure.Providers
 {
     public class CustomRoleProvider : RoleProvider
     {
-        private IUserService _userService => (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
-        private IRoleService _roleService => (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
+        private IUserService UserService 
+            => (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
+
+        private IRoleService RoleService 
+            => (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
 
 
         public override bool IsUserInRole(string email, string roleName)
         {
-            var user = _userService.GetUserByEmail(email);
+            var user = UserService.GetUserByEmail(email);
 
             if (ReferenceEquals(user, null))
                 return false;
 
-            var userRole = _roleService.GetRoleById(user.Id);
+            var userRole = RoleService.GetRoleById(user.Id);
 
             if (!ReferenceEquals(userRole, null) && userRole.Name == roleName)
             {
@@ -33,7 +36,7 @@ namespace MVCPL.Infrastructure.Providers
 
         public override string[] GetRolesForUser(string email)
         {
-            var roles = _userService.GetRolesForUser(email);
+            var roles = UserService.GetRolesForUser(email);
 
             if (ReferenceEquals(roles, null))
                 return new string[0];

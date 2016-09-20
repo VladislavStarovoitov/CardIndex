@@ -27,11 +27,9 @@ namespace MVCPL
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css",
                       "~/Content/bootstrap.css",
                       "~/Content/chosen.css",
-                      "~/Content/prism.css",
-                      "~/Content/style"));
+                      "~/Content/prism.css"));
         }
     }
 }

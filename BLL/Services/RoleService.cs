@@ -11,7 +11,7 @@ namespace BLL.Services
 {
     public class RoleService : IRoleService
     {
-        IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RoleService(IUnitOfWork unitOfWork)
         {

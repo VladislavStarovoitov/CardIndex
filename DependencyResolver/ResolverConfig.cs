@@ -26,13 +26,17 @@ namespace DependencyResolver
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IRoleService>().To<RoleService>();
             kernel.Bind<ICommentService>().To<CommentService>();
+            kernel.Bind<IAuthorService>().To<AuthorService>();
+            kernel.Bind<IGenreService>().To<GenreService>();
             #endregion
 
             #region Repositories
-            kernel.Bind<IUserRepository>().To<UserRepository>();
-            kernel.Bind<IBookRepository>().To<BookRepository>();
-            kernel.Bind<IRoleRepository>().To<RoleRepository>();
-            kernel.Bind<ICommentRepository>().To<CommentRepository>();
+            //kernel.Bind<IUserRepository>().To<UserRepository>();
+            //kernel.Bind<IBookRepository>().To<BookRepository>();
+            //kernel.Bind<IRoleRepository>().To<RoleRepository>();
+            //kernel.Bind<ICommentRepository>().To<CommentRepository>();
+            //kernel.Bind<IGenreRepository>().To<GenreRepository>();
+            //kernel.Bind<IAuthorRepository>().To<AuthorRepository>();
             #endregion
         }
     }

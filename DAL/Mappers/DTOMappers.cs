@@ -17,9 +17,12 @@ namespace DAL.Mappers
                 Id = dalBook.Id,
                 Name = dalBook.Name,
                 Description = dalBook.Description,
-                Image = dalBook.Image,
+                Cover = dalBook.Cover,
                 Year = dalBook.Year,
-                ImageMimeType = dalBook.ImageMimeType,
+                CoverMimeType = dalBook.CoverMimeType,
+                Content = dalBook.Content,
+                ContentMimeType = dalBook.ContentMimeType,
+                CreationDate = dalBook.CreationDate,
                 Authors = dalBook.Authors.Select(a => new Author() { Name = a.Name, Id = a.Id }).ToList(),
                 Genres = dalBook.Genres.Select(a => new Genre() { Name = a.Name, Id = a.Id }).ToList() //List из-за Icollection
             };
@@ -33,9 +36,9 @@ namespace DAL.Mappers
                 Id = book.Id,
                 Name = book.Name,
                 Description = book.Description,
-                Image = book.Image,
+                Cover = book.Cover,
                 Year = book.Year,
-                ImageMimeType = book.ImageMimeType,
+                CoverMimeType = book.CoverMimeType,
                 Authors = book.Authors.Select(a => a.ToDtoAuthor()).ToList(),
                 Genres = book.Genres.Select(g => g.ToDtoGenre()).ToList()
             };
@@ -61,14 +64,14 @@ namespace DAL.Mappers
 
         public static DtoUser ToDtoUser(this User user)
         {
-            var u = new DtoUser();
+            var dtoUser = new DtoUser();
 
-            u.Id = user.Id;
-            u.Email = user.Email;
-            u.Password = user.Password;
-            u.CreationDate = user.CreationDate;
-            //Roles = user.Roles.Select(r => r.ToDtoRole()).ToList()
-            return u;
+            dtoUser.Id = user.Id;
+            dtoUser.Email = user.Email;
+            dtoUser.Password = user.Password;
+            dtoUser.CreationDate = user.CreationDate;
+            dtoUser.Avatar = user.Avatar ?? new byte[0];
+            return dtoUser;
         }
 
         public static User ToOrmUser(this DtoUser dtoUser)
@@ -79,7 +82,8 @@ namespace DAL.Mappers
                 Email = dtoUser.Email,
                 Password = dtoUser.Password,
                 CreationDate = dtoUser.CreationDate,
-                Roles = dtoUser.Roles.Select(r => r.ToOrmRole()).ToList()
+                Roles = dtoUser.Roles.Select(r => r.ToOrmRole()).ToList(),
+                Avatar = dtoUser.Avatar
             };
         }
 
@@ -111,7 +115,7 @@ namespace DAL.Mappers
                 Text = comment.Text,
                 CreationDate = comment.CreationDate,
                 UserEmail = comment.UserEmail,
-                Avatar = comment.Avatar
+                Avatar = comment.Avatar ?? new byte[0]
             };
             return dtoComment;
         }

@@ -1,4 +1,4 @@
-namespace ORM
+ namespace ORM
 {
     using System;
     using System.Collections.Generic;
@@ -23,9 +23,13 @@ namespace ORM
 
         public string Description { get; set; }
 
-        public byte[] Image { get; set; }
+        public byte[] Cover { get; set; }
 
-        public string ImageMimeType { get; set; }
+        public string CoverMimeType { get; set; }
+
+        public byte[] Content { get; set; }
+
+        public string ContentMimeType { get; set; }
 
         public DateTime CreationDate { get; set; }
 
